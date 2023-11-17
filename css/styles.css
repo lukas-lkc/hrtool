@@ -1,0 +1,273 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: var(--color-white);
+    /*cor de todas as fontes que não tiverem atributo de cor própria*/
+}
+
+:root {
+    --color-white: #fff;
+    --color-dark1: #272727;
+    --color-dark2: #2d2d2d;
+    --color-dark3: #414141;
+    --color-dark4: #1c1c1c;
+    --color-dark5: #343434;
+    --color-green1: #3db36b;
+    --color-green2: #0f642f;
+    ;
+}
+
+.header_bar {
+    background-color: var(--color-green1);
+    height: 56px;
+    /*ou (3.5em = 3,5 x 16) = 56px*/
+    text-align: center;
+    display: flex;
+    /*deixa um bloco ao lado do outro*/
+    /*flex-direction: column; deixa um elemento em baixo do outro em formato de coluna*/
+    flex-direction: row;
+    /*deixa um elemento ao lado do outro linha (vem por default)*/
+    align-items: center;
+    justify-content: space-between;
+    /*distancia entre os blocos, sempre ao extremo*/
+    padding: 0 10%;
+    /* espaçamentos apenas na direit/esquerda*/
+}
+
+.header_bar h1 {
+    width: 45px;
+}
+
+.nav_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3em;
+}
+
+.nav_header a {
+    text-decoration: none;
+    color: var(--color-white);
+    transition: 1s;
+    font-weight: bold;
+}
+
+.nav_header a:hover {
+    color: var(--color-green1);
+    transition: 1s;
+}
+
+/*aqui deve ser feito posteriormente com JS*/
+.active {
+    background-color: var(--color-green2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn_icon_header {
+    background-color: transparent;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    display: none;
+}
+
+.container {
+    background-color: var(--color-dark1);
+    min-height: 60vh;
+    padding: 25px;
+    transition: 1s;
+}
+
+.products-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--color-dark2);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/*primeiro carrossel*/
+.slider_escalas {
+    display: flex;
+    /*uma opção fica ao lado da outra*/
+    width: 100%;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;/*distância dos botões das imagens*/
+
+    
+}
+
+.container_opcoes {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+    /*transition: transform 0.5s ease;*/
+}
+
+/*img*/
+.slide_escala {
+    text-align: center;
+    opacity: 0;
+    transition: opacity .2s;
+    position: absolute;
+    width: 100%;
+    /*
+    line-height: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    margin: 10px;
+    cursor: pointer;*/
+}
+
+.on {
+    opacity: 1;
+}
+
+/*
+  .slide_escala:hover {
+    background-color: #f0f0f0;
+  }*/
+#prev_btn,
+#next_btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#prev_btn svg,
+#next_btn svg {
+    width: 100%;
+    height: 100%;
+}
+
+/*segundo carrossel*/
+
+
+
+.btn {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: var(--color-green1);
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background-color: var(--color-green2);
+}
+
+footer {
+    background-color: var(--color-green1);
+    text-align: center;
+    padding: 80px;
+    /* Adicione regras de estilo específicas para o rodapé, se necessário */
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+    .container {
+        padding: 0px;
+    }
+
+    .btn {
+        margin-bottom: 40px;
+    }
+
+    footer {
+        padding: 40px;
+    }
+}
+
+
+/* Smartphone */
+@media (max-width: 640px) {
+
+    /*
+    background-color: var(--color-dark4);
+    margin-left: 20px;
+    margin-right: 20px;
+    */
+    .nav_header {
+        position: absolute;
+        flex-direction: column;
+        top: 0;
+        background-color: var(--color-dark5);
+        height: 100%;
+        width: 35vw;
+        padding: 1em;
+        animation-duration: 1s;
+        margin-left: -100vw;
+        z-index: 2;
+    }
+
+    @keyframes showSidebar {
+        from {
+            margin-left: -100vw;
+        }
+
+        top {
+            margin-left: -10vw;
+        }
+    }
+
+    .btn_icon_header {
+        display: block;
+    }
+
+    .btn {
+        margin-bottom: 40px;
+    }
+
+    .container {
+        padding: 0px;
+    }
+
+    footer {
+        padding: 40px;
+    }
+}
+
+/* Smartwatch*/
+@media (max-width: 260px) {
+    header {
+        padding: 5px;
+        text-align: center;
+        border-bottom: 2px solid #0f642f;
+    }
+
+    header h1 {
+        font-size: 5px;
+    }
+
+    .nav_header {
+        height: 300px;
+        width: 60vw;
+    }
+
+    .btn {
+        margin-bottom: 20px;
+        padding: 7px 0px 5px 0px;
+    }
+
+    .container {
+        padding: 0px;
+    }
+
+    footer {
+        padding: 20px;
+    }
+}
