@@ -1,4 +1,4 @@
-#1 Página de Teste de Conhecimentos em HTML, CSS e JS
+Página de Teste de Conhecimentos em HTML, CSS e JS
 
 Esta página é um teste dos meus conhecimentos em HTML, CSS e JavaScript. Aqui, eu exploro diferentes conceitos e técnicas para criar uma página web funcional e visualmente agradável.
 
