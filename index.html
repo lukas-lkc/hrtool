@@ -45,7 +45,9 @@
   <!-- main -->
   <main tabindex="0" class="container" id="container">
     <section class="description_top">
-      <img class="img_1" src="" />
+      <div class="img_back">
+        <img class="img_1" src="https://i.postimg.cc/FHYBZDqk/rh.jpg" alt="rh_image" />
+      </div class="text_header">
       <div class="text_top">
         <h1>RH TempoCerto</h1>
         <p>RH TempoCerto é uma ferramenta intuitiva e eficiente desenvolvida para
@@ -61,8 +63,9 @@
     <form class="form_main">
       <h3>Preencha os dados abaixo</h3>
       <!--Campo nome funcionario-->
-      <label class="campo_nome_funcionario" for="nomeFunconario"></label>
-      <input type="text" id="nomeFunconario" name="nomeFunconario" placeholder="Nome do Funcionário aqui">
+      <label for="nomeFunconario"></label>
+      <input class="campo_nome_funcionario" type="text" id="nomeFunconario" name="nomeFunconario"
+        placeholder="Nome do Funcionário Aqui">
       <h3>Escala de trabalho diária</h3>
 
       <!--Slide1-->
@@ -88,42 +91,59 @@
       <!--fim slide1-->
 
       <h3>Horário de almoço</h3>
-      <label class="campo_hora_almoco" for="horaAlmoco"></label>
-      <input type="text" id="horaAlmoco" name="horaAlmoco">
+      <label for="horaAlmoco"></label>
+      <input class="campo_hora_almoco" type="text" id="horaAlmoco" name="horaAlmoco" placeholder="01:00:00">
       <section class="dias_semana">
         <h3>Dias da Semana</h3>
-
-        <!--slide2-->
-
-        <div class="slider_dias" id="slide2">
-          <button id="prev_btn2" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
-              <path
-                d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
-            </svg></button>
-          <div class="container_dias">
-            <!--caso troque para imagem:
-            <img src="" alt="" class="slide_escala"-->
-            <div class="slide_dia on" id="seg">Seg</div>
-            <div class="slide_dia" id="ter">Ter</div>
-            <div class="slide_dia" id="qua">Qua</div>
-            <div class="slide_dia" id="qui">Qui</div>
-            <div class="slide_dia" id="sex">Sex</div>
-            <div class="slide_dia" id="sab">Sab</div>
-            <div class="slide_dia" id="dom">Dom</div>
-          </div>
-          <button id="next_btn2" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
-              <path
-                d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
-            </svg></button>
+        <div class="dias_semana_campos">
+          <div class="dias">Segunda</div>
+          <label for="entrada">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
+          <label for="entrada">Saída:</label>
+          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
         </div>
-        <!--fim slide2-->
-
-        <label for="entrada">Entrada:</label>
-        <input type="text" id="entrada" name="entrada" placeholder="">
-        <label for="entrada">Saída:</label>
-        <input type="text" id="entrada" name="entrada" placeholder="">
+        <div class="dias_semana_campos">
+          <div class="dias">Terça</div>
+          <label for="entrada">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
+          <label for="entrada">Saída:</label>
+          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
+        </div>
+        <div class="dias_semana_campos">
+          <div class="dias">Quarta</div>
+          <label for="entrada">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
+          <label for="entrada">Saída:</label>
+          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
+        </div>
+        <div class="dias_semana_campos">
+          <div class="dias">Quinta</div>
+          <label for="entrada">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
+          <label for="entrada">Saída:</label>
+          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
+        </div>
+        <div class="dias_semana_campos">
+          <div class="dias">Sexta</div>
+          <label for="entrada">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
+          <label for="entrada">Saída:</label>
+          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
+        </div>
+        <div class="dias_semana_campos">
+          <div class="dias">Sábado</div>
+          <label for="entrada">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
+          <label for="entrada">Saída:</label>
+          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
+        </div>
+        <div class="dias_semana_campos">
+          <div class="dias">Domingo</div>
+          <label for="entrada">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
+          <label for="entrada">Saída:</label>
+          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
+        </div>
         <div>
           <h2 id="resultado"></h2>
         </div>

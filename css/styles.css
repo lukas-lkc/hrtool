@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    font-size: 20px;
     color: var(--color-white);
     /*cor de todas as fontes que não tiverem atributo de cor própria*/
 }
@@ -14,10 +15,11 @@
     --color-dark3: #414141;
     --color-dark4: #1c1c1c;
     --color-dark5: #343434;
-    --color-green1: #3db36b;
-    --color-green2: #0f642f;
+    --color-green1: #2797c2;
+    --color-green2: #1e7fa7;
     ;
 }
+
 /*////////////////////cabeçalho////////////////////*/
 .header_bar {
     background-color: var(--color-green1);
@@ -82,14 +84,134 @@
     transition: 1s;
 }
 
-.products-container {
+.bold {
+    font-weight: bold;
+}
+
+/*////////////////////sessão 1////////////////////*/
+
+.description_top {
+    max-width: 1200px;
+    height: 40vh;
+    margin: 0 auto;
+    padding: 10 0px;
+    margin-bottom: 20px;
+    display: flex;
+    background-color: #1b1b1b;
+    /* Cor de fundo de backup */
+}
+
+.img_back {
+    width: 50%;
+    display: inline-block;
+    /* Adicione regras de estilo específicas para os cartões, se necessário */
+}
+
+.img_1 {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+    /*espaço entre a imagem e oq estiver abaixo*/
+    background-position: center;
+    background-size: cover;
+    /*tenta mostrar o max possível da imagem na área definida*/
+    background-color: gray;
+}
+
+.text_header {
     max-width: 1200px;
     margin: 0 auto;
     background-color: var(--color-dark2);
 }
 
-.bold {
-    font-weight: bold;
+.text_top {
+    width: 100%;
+    display: inline-block;
+    /* Adicione regras de estilo específicas para os cartões, se necessário */
+    margin: 1% 3%;
+    /*1% cima/baixo e laterais*/
+}
+
+.text_top h1 {
+    font-size: 50px;
+    height: 20%;
+    width: 100%;
+    margin-bottom: 10px;
+    /*espaço entre a imagem e oq estiver abaixo*/
+    background-position: center;
+    background-size: cover;
+    /*tenta mostrar o max possível da imagem na área definida*/
+
+}
+
+.text_top p {
+    height: 80%;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 40px;
+    /*espaço entre a imagem e oq estiver abaixo*/
+    background-position: center;
+    background-size: cover;
+    /*tenta mostrar o max possível da imagem na área definida*/
+}
+
+/*FORM*/
+.form_main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 10px 20px 10px;
+    background-color: #1b1b1b;
+    text-align: left;
+    /* Cor de fundo de backup */
+}
+
+.form_main h3{
+    font-size: 30px;
+    padding: 30px 0px 10px 15px;
+    
+}
+
+.campo_nome_funcionario, .campo_hora_almoco
+{
+    color: var(--color-dark2);
+    font-size: 25px;
+    height: 40px;
+    padding: 0 10px;
+    text-align: center;
+    margin-left: 15px;
+}
+
+.campo_entrada, .campo_saida{
+    font-size: 25px;
+    width: 150px;
+    height: 40px;
+    padding: 0 10px;
+    text-align: center;
+    color: var(--color-dark2);
+}
+
+.dias_semana{
+    padding-top: 40px;
+}
+
+.dias_semana_campos{
+    text-align: center;
+    display: flex;
+    /*deixa um bloco ao lado do outro*/
+    /*flex-direction: column; deixa um elemento em baixo do outro em formato de coluna*/
+    flex-direction: row;
+    /*deixa um elemento ao lado do outro linha (vem por default)*/
+    align-items: center;
+    justify-content: space-between;
+    /*distancia entre os blocos, sempre ao extremo*/
+    padding: 20px 10px 0 15px;
+}
+
+.dias{
+    text-align: left;
+    width: 120px;
+    font-size: 30px;
 }
 /*////////////////////primeiro carrossel////////////////////*/
 .slider_escalas {
@@ -125,48 +247,9 @@
 .on {
     opacity: 1;
 }
-/*////////////////////segundo carrossel////////////////////*/
-.slider_dias {
-    display: flex;
-    /*uma opção fica ao lado da outra*/
-    width: 100%;
-    min-height: 100px;
-    align-items: center;
-    justify-content: center;
-    gap: 7em;
-    /*distância dos botões das imagens*/
-}
 
-.container_dias {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 10px;
-    /*transition: transform 0.5s ease;*/
-}
-
-/*img*/
-.slide_dia {
-    text-align: center;
-    opacity: 0;
-    transition: opacity .2s;
-    position: absolute;
-    /*width: 100%; para img*/
-    font-size: 40px;
-}
-
-.on {
-    opacity: 1;
-}
-/*
-  .slide_escala:hover {
-    background-color: #f0f0f0;
-  }*/
 #prev_btn,
-#next_btn,
-#prev_btn2,
-#next_btn2 {
+#next_btn {
     width: 70px;
     height: 70px;
     border: none;
@@ -175,9 +258,7 @@
 }
 
 #prev_btn svg,
-#next_btn svg,
-#prev_btn2 svg,
-#next_btn2 svg {
+#next_btn svg {
     width: 100%;
     height: 100%;
 }
