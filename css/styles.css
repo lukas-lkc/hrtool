@@ -18,7 +18,7 @@
     --color-green2: #0f642f;
     ;
 }
-
+/*////////////////////cabeçalho////////////////////*/
 .header_bar {
     background-color: var(--color-green1);
     height: 56px;
@@ -37,7 +37,8 @@
 }
 
 .header_bar h1 {
-    width: 45px;
+    font-size: 20px;
+    width: 200px;
 }
 
 .nav_header {
@@ -90,18 +91,16 @@
 .bold {
     font-weight: bold;
 }
-
-/*primeiro carrossel*/
+/*////////////////////primeiro carrossel////////////////////*/
 .slider_escalas {
     display: flex;
     /*uma opção fica ao lado da outra*/
     width: 100%;
-    min-height: 100vh;
+    min-height: 100px;
     align-items: center;
     justify-content: center;
-    gap: 1rem;/*distância dos botões das imagens*/
-
-    
+    gap: 7em;
+    /*distância dos botões das imagens*/
 }
 
 .container_opcoes {
@@ -109,44 +108,76 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 700px;
+    width: 10px;
     /*transition: transform 0.5s ease;*/
 }
 
-/*img*/
+/*svg*/
 .slide_escala {
     text-align: center;
     opacity: 0;
     transition: opacity .2s;
     position: absolute;
-    width: 100%;
-    /*
-    line-height: 50px;
-    text-align: center;
-    border: 1px solid #ccc;
-    margin: 10px;
-    cursor: pointer;*/
+    /*width: 100%; para img*/
+    font-size: 40px;
 }
 
 .on {
     opacity: 1;
 }
+/*////////////////////segundo carrossel////////////////////*/
+.slider_dias {
+    display: flex;
+    /*uma opção fica ao lado da outra*/
+    width: 100%;
+    min-height: 100px;
+    align-items: center;
+    justify-content: center;
+    gap: 7em;
+    /*distância dos botões das imagens*/
+}
 
+.container_dias {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    /*transition: transform 0.5s ease;*/
+}
+
+/*img*/
+.slide_dia {
+    text-align: center;
+    opacity: 0;
+    transition: opacity .2s;
+    position: absolute;
+    /*width: 100%; para img*/
+    font-size: 40px;
+}
+
+.on {
+    opacity: 1;
+}
 /*
   .slide_escala:hover {
     background-color: #f0f0f0;
   }*/
 #prev_btn,
-#next_btn {
-    width: 30px;
-    height: 30px;
+#next_btn,
+#prev_btn2,
+#next_btn2 {
+    width: 70px;
+    height: 70px;
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
 #prev_btn svg,
-#next_btn svg {
+#next_btn svg,
+#prev_btn2 svg,
+#next_btn2 svg {
     width: 100%;
     height: 100%;
 }

@@ -23,7 +23,7 @@
           d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
       </svg>
     </button>
-    <h1>LP</h1>
+    <h1>RH TempoCerto</h1>
     <!--caso queira por imagem
       <div class="logo_header">
         <img src="link" class="img_logo" alt"legenda">
@@ -56,7 +56,7 @@
           Otimize a gestão de tempo e promova a conformidade com a legislação
           trabalhista com o RH TempoCerto</p>
       </div>
-    <!--form-->
+      <!--form-->
     </section>
     <form class="form_main">
       <h3>Preencha os dados abaixo</h3>
@@ -65,9 +65,10 @@
       <input type="text" id="nomeFunconario" name="nomeFunconario" placeholder="Nome do Funcionário aqui">
       <h3>Escala de trabalho diária</h3>
 
-      <div class="slider_escalas">
-        <button id="prev_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            class="bi bi-caret-left" viewBox="0 0 16 16">
+      <!--Slide1-->
+      <div class="slider_escalas" id="slide1">
+        <button id="prev_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
             <path
               d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
           </svg></button>
@@ -78,29 +79,47 @@
           <div class="slide_escala">8h</div>
           <div class="slide_escala">12h</div>
         </div>
-        <button id="next_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-            class="bi bi-caret-right" viewBox="0 0 16 16">
+        <button id="next_btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
             <path
               d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
           </svg></button>
       </div>
+      <!--fim slide1-->
 
       <h3>Horário de almoço</h3>
       <label class="campo_hora_almoco" for="horaAlmoco"></label>
       <input type="text" id="horaAlmoco" name="horaAlmoco">
       <section class="dias_semana">
         <h3>Dias da Semana</h3>
-        <div class="slide_dias">
-          <div class="opcoes_dia">
-            <div class="opcao_dia" id="seg">Seg</div>
-            <div class="opcao_dia" id="ter">Ter</div>
-            <div class="opcao_dia" id="qua">Qua</div>
-            <div class="opcao_dia" id="qui">Qui</div>
-            <div class="opcao_dia" id="sex">Sex</div>
-            <div class="opcao_dia" id="sab">Sab</div>
-            <div class="opcao_dia" id="dom">Dom</div>
+
+        <!--slide2-->
+
+        <div class="slider_dias" id="slide2">
+          <button id="prev_btn2" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">
+              <path
+                d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" />
+            </svg></button>
+          <div class="container_dias">
+            <!--caso troque para imagem:
+            <img src="" alt="" class="slide_escala"-->
+            <div class="slide_dia on" id="seg">Seg</div>
+            <div class="slide_dia" id="ter">Ter</div>
+            <div class="slide_dia" id="qua">Qua</div>
+            <div class="slide_dia" id="qui">Qui</div>
+            <div class="slide_dia" id="sex">Sex</div>
+            <div class="slide_dia" id="sab">Sab</div>
+            <div class="slide_dia" id="dom">Dom</div>
           </div>
+          <button id="next_btn2" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-caret-right" viewBox="0 0 16 16">
+              <path
+                d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+            </svg></button>
         </div>
+        <!--fim slide2-->
+
         <label for="entrada">Entrada:</label>
         <input type="text" id="entrada" name="entrada" placeholder="">
         <label for="entrada">Saída:</label>

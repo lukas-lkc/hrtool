@@ -43,47 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-    //////////////////////make to work sliders
-    //slider 
-    const slider = document.querySelectorAll('.slide_escala');
-    const btnPrev = document.getElementById('prev_btn');
-    const btnNext = document.getElementById('next_btn');
-
-    let currentSlide = 0;
-
-    function hideSlider() {
-        Array.from(slider).forEach(item => item.classList.remove('on'));
-    }
-
-    function showSlider() {
-        slider[currentSlide].classList.add('on');
-    }
-
-    function nextSlider() {
-        hideSlider();
-        if (currentSlide == slider.length - 1) {
-            currentSlide = 0;
-        } else {
-            currentSlide++;
-        }
-        showSlider();
-    }
-
-    function prevSlider() {
-        hideSlider();
-        if (currentSlide == 0) {
-            currentSlide = slider.length - 1;
-        } else {
-            currentSlide--;
-        }
-        showSlider();
-    }
-
-    btnNext.addEventListener('click', nextSlider);
-    btnPrev.addEventListener('click', prevSlider);
-
     // Adicionando esta linha para garantir que o primeiro slide esteja visível inicialmente
-    showSidebar();
 
     /*
     //captura o nome do funcionário a partir do enter 
@@ -120,3 +80,81 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     */
 });
+
+//////////////////////make to work sliders
+//slider 1
+const slider = document.querySelectorAll('.slide_escala');
+const btnPrev = document.getElementById('prev_btn');
+const btnNext = document.getElementById('next_btn');
+
+let currentSlide = 0;
+
+function hideSlider() {
+    Array.from(slider).forEach(item => item.classList.remove('on'));
+}
+
+function showSlider() {
+    slider[currentSlide].classList.add('on');
+}
+
+function nextSlider() {
+    hideSlider();
+    if (currentSlide == slider.length - 1) {
+        currentSlide = 0;
+    } else {
+        currentSlide++;
+    }
+    showSlider();
+}
+
+function prevSlider() {
+    hideSlider();
+    if (currentSlide == 0) {
+        currentSlide = slider.length - 1;
+    } else {
+        currentSlide--;
+    }
+    showSlider();
+}
+
+btnNext.addEventListener('click', nextSlider);
+btnPrev.addEventListener('click', prevSlider);
+
+//////////////////////
+//slider 2
+const slider2 = document.querySelectorAll('.slide_dia');
+const btnPrev2 = document.getElementById('prev_btn2');
+const btnNext2 = document.getElementById('next_btn2');
+
+let currentSlide2 = 0;
+
+function hideSlider2() {
+    Array.from(slider2).forEach(item => item.classList.remove('on'));
+}
+
+function showSlider2() {
+    slider2[currentSlide2].classList.add('on');
+}
+
+function nextSlider2() {
+    hideSlider2();
+    if (currentSlide2 == slider2.length - 1) {
+        currentSlide2 = 0;
+    } else {
+        currentSlide2++;
+    }
+    showSlider2();
+}
+
+function prevSlider2() {
+    hideSlider2();
+    if (currentSlide2 == 0) {
+        currentSlide2 = slider2.length - 1;
+    } else {
+        currentSlide2--;
+    }
+    showSlider2();
+}
+
+btnNext2.addEventListener('click', nextSlider2);
+btnPrev2.addEventListener('click', prevSlider2);
