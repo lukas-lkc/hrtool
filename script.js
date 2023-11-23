@@ -43,26 +43,67 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-    // Adicionando esta linha para garantir que o primeiro slide esteja visível inicialmente
+    //////////////////////make to work sliders
+    //slider 1
+    const slider = document.querySelectorAll('.slide_escala');
+    const btnPrev = document.getElementById('prev_btn');
+    const btnNext = document.getElementById('next_btn');
 
-    /*
-    //captura o nome do funcionário a partir do enter 
-    const nomeInput = document.getElementById("nomeFuncionario");
-    
-    nomeInput.addEventListener("keypress", function (event) {
+    let currentSlide = 0;
+
+    function hideSlider() {
+        Array.from(slider).forEach(item => item.classList.remove('on'));
+    }
+
+    function showSlider() {
+        slider[currentSlide].classList.add('on');
+    }
+
+    function nextSlider() {
+        hideSlider();
+        if (currentSlide == slider.length - 1) {
+            currentSlide = 0;
+        } else {
+            currentSlide++;
+        }
+        showSlider();
+    }
+
+    function prevSlider() {
+        hideSlider();
+        if (currentSlide == 0) {
+            currentSlide = slider.length - 1;
+        } else {
+            currentSlide--;
+        }
+        showSlider();
+    }
+
+    btnNext.addEventListener('click', nextSlider);
+    btnPrev.addEventListener('click', prevSlider);
+
+    //////////////////////
+
+    //campos
+    const nomeFunc = document.getElementById("nomeFuncionario");
+       
+    nomeFunc.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault(); // Evita o envio do formulário ao pressionar Enter
             // Aqui você pode realizar a ação desejada ao pressionar Enter
-            console.log("Nome do funcionário:", nomeInput.value);
+            console.log("Nome do funcionário: ", nomeFunc.value);
         }
     });
     //ou ao clicar fora
-    nomeInput.addEventListener("blur", function () {
+    nomeFunc.addEventListener("blur", function () {
         // Ação ao sair do campo
-        console.log("Nome do funcionário ao sair:", nomeInput.value);
+        console.log("Nome do funcionário ao sair:", nomeFunc.value);
     });
     
-    
+
+    /////salvar dados/////
+    /////campoFuncionario////
+    /*
     //captura o horário de almoço a partir do enter 
     const nomeInput = document.getElementById("nomeFuncionario");
     
@@ -80,44 +121,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     */
 });
-
-//////////////////////make to work sliders
-//slider 1
-const slider = document.querySelectorAll('.slide_escala');
-const btnPrev = document.getElementById('prev_btn');
-const btnNext = document.getElementById('next_btn');
-
-let currentSlide = 0;
-
-function hideSlider() {
-    Array.from(slider).forEach(item => item.classList.remove('on'));
-}
-
-function showSlider() {
-    slider[currentSlide].classList.add('on');
-}
-
-function nextSlider() {
-    hideSlider();
-    if (currentSlide == slider.length - 1) {
-        currentSlide = 0;
-    } else {
-        currentSlide++;
-    }
-    showSlider();
-}
-
-function prevSlider() {
-    hideSlider();
-    if (currentSlide == 0) {
-        currentSlide = slider.length - 1;
-    } else {
-        currentSlide--;
-    }
-    showSlider();
-}
-
-btnNext.addEventListener('click', nextSlider);
-btnPrev.addEventListener('click', prevSlider);
-
-//////////////////////

@@ -80,7 +80,7 @@
 .container {
     background-color: var(--color-dark1);
     min-height: 60vh;
-    padding: 25px;
+    padding: 20px;
     transition: 1s;
 }
 
@@ -141,7 +141,6 @@
     background-position: center;
     background-size: cover;
     /*tenta mostrar o max possível da imagem na área definida*/
-
 }
 
 .text_top p {
