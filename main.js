@@ -1,6 +1,10 @@
 //espera que o DOM seja carregado
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { app } from "/firebaseConfig.js"; // Importa o objeto 'app' do firebaseConfig.js
 document.addEventListener('DOMContentLoaded', function () {
-
+    //firebase
+    const db = getFirestore(app);
+    const nomeFunc = document.getElementById("nomeFuncionario");
     //show and close sidebar
     var headerBar = document.getElementById('header_bar');
     var navHeader = document.getElementById('nav_header');
@@ -83,28 +87,30 @@ document.addEventListener('DOMContentLoaded', function () {
     btnPrev.addEventListener('click', prevSlider);
 
     //////////////////////
-    /*
-        //campos
-        const nomeFunc = document.getElementById("nomeFuncionario");
-           
-        nomeFunc.addEventListener("keypress", function (event) {
-            if (event.key === "Enter") {
-                event.preventDefault(); // Evita o envio do formulário ao pressionar Enter
-                // Aqui você pode realizar a ação desejada ao pressionar Enter
-                console.log("Nome do funcionário: ", nomeFunc.value);
-            }
-        });
-        //ou ao clicar fora
-        nomeFunc.addEventListener("blur", function () {
-            // Ação ao sair do campo
-            console.log("Nome do funcionário ao sair:", nomeFunc.value);
-        });
-      */
-
     /////salvar dados/////
     /////campoFuncionario////
 
-    
+    nomeFunc.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            salvarNomeNoFirestore(nomeFunc.value);
+        }
+    });
+
+    function salvarNomeNoFirestore(nome) {
+        if (nome.trim() !== "") {
+            // Salva o nome no Firestore
+            addDoc(collection(db, "funcionarios"), {
+                nome: nome
+            })
+                .then((docRef) => {
+                    console.log("Nome do funcionário salvo com ID:", docRef.id);
+                })
+                .catch((error) => {
+                    console.error("Erro ao salvar nome do funcionário:", error);
+                });
+        }
+    }
 
     /*
     //captura o horário de almoço a partir do enter 
