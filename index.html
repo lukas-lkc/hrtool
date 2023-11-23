@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!--limita o usuário ao viewport, não deixa dar zoom-->
   <title>RH TempoCerto</title>
   <link rel="stylesheet" href="./css/styles.css" /><!--local-->
   <script src="./script.js" defer></script><!--local-->
+  <!--<script src="./firebaseConfig.js" defer></script>local-->
   <!--github-->
   <link href="" rel="stylesheet" />
   <script src=""></script>
@@ -157,6 +159,53 @@
       &copy; 2023
     </p>
   </footer>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBDykdiCuuMJksQvJ4y2tGkKKdIX3PprBw",
+      authDomain: "hrtool-c763b.firebaseapp.com",
+      databaseURL: "https://hrtool-c763b-default-rtdb.firebaseio.com",
+      projectId: "hrtool-c763b",
+      storageBucket: "hrtool-c763b.appspot.com",
+      messagingSenderId: "443882727101",
+      appId: "1:443882727101:web:54dd9ddd98ae6067d4f9d4",
+      measurementId: "G-PGJTJVYZYN"
+    };
+
+    // Inicialize o Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const nomeFunc = document.getElementById("nomeFuncionario");
+
+    nomeFunc.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        salvarNomeNoFirestore(nomeFunc.value);
+      }
+    });
+
+    nomeFunc.addEventListener("blur", function () {
+      salvarNomeNoFirestore(nomeFunc.value);
+    });
+
+    function salvarNomeNoFirestore(nome) {
+      if (nome.trim() !== "") {
+        // Salva o nome no Firestore
+        addDoc(collection(db, "funcionarios"), {
+          nome: nome
+        })
+          .then((docRef) => {
+            console.log("Nome do funcionário salvo com ID:", docRef.id);
+          })
+          .catch((error) => {
+            console.error("Erro ao salvar nome do funcionário:", error);
+          });
+      }
+    }
+  </script>
 </body>
 
 </html>

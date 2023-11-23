@@ -83,26 +83,29 @@ document.addEventListener('DOMContentLoaded', function () {
     btnPrev.addEventListener('click', prevSlider);
 
     //////////////////////
-
-    //campos
-    const nomeFunc = document.getElementById("nomeFuncionario");
-       
-    nomeFunc.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault(); // Evita o envio do formulário ao pressionar Enter
-            // Aqui você pode realizar a ação desejada ao pressionar Enter
-            console.log("Nome do funcionário: ", nomeFunc.value);
-        }
-    });
-    //ou ao clicar fora
-    nomeFunc.addEventListener("blur", function () {
-        // Ação ao sair do campo
-        console.log("Nome do funcionário ao sair:", nomeFunc.value);
-    });
-    
+    /*
+        //campos
+        const nomeFunc = document.getElementById("nomeFuncionario");
+           
+        nomeFunc.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Evita o envio do formulário ao pressionar Enter
+                // Aqui você pode realizar a ação desejada ao pressionar Enter
+                console.log("Nome do funcionário: ", nomeFunc.value);
+            }
+        });
+        //ou ao clicar fora
+        nomeFunc.addEventListener("blur", function () {
+            // Ação ao sair do campo
+            console.log("Nome do funcionário ao sair:", nomeFunc.value);
+        });
+      */
 
     /////salvar dados/////
     /////campoFuncionario////
+
+    
+
     /*
     //captura o horário de almoço a partir do enter 
     const nomeInput = document.getElementById("nomeFuncionario");
