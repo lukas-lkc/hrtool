@@ -1,5 +1,5 @@
 //espera que o DOM seja carregado
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { app } from "/firebaseConfig.js"; // Importa o objeto 'app' do firebaseConfig.js
 document.addEventListener('DOMContentLoaded', function () {
     //firebase
@@ -85,48 +85,118 @@ document.addEventListener('DOMContentLoaded', function () {
 
     btnNext.addEventListener('click', nextSlider);
     btnPrev.addEventListener('click', prevSlider);
-
-    //////////////////////
-    /////salvar dados/////
-    /////campoFuncionario////
-
-    nomeFunc.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            salvarNomeNoFirestore(nomeFunc.value);
-        }
-    });
-
-    function salvarNomeNoFirestore(nome) {
-        if (nome.trim() !== "") {
-            // Salva o nome no Firestore
-            addDoc(collection(db, "funcionarios"), {
-                nome: nome
-            })
-                .then((docRef) => {
-                    console.log("Nome do funcionário salvo com ID:", docRef.id);
-                })
-                .catch((error) => {
-                    console.error("Erro ao salvar nome do funcionário:", error);
-                });
-        }
-    }
-
     /*
-    //captura o horário de almoço a partir do enter 
-    const nomeInput = document.getElementById("nomeFuncionario");
+        //////////////////////
+        /////salvar dados/////
+        /////campoFuncionario////
+    // Variável global para armazenar o ID do funcionário
+    // Função para salvar o horário de almoço em uma subcoleção "horarios"
+    // Variável global para armazenar o ID do funcionário
+    let funcionarioId;
     
-    nomeInput.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault(); // Evita o envio do formulário ao pressionar Enter
-            // Aqui você pode realizar a ação desejada ao pressionar Enter
-            console.log("Hora almoço:", nomeInput.value);
+    // Função para verificar se um funcionário já existe com o mesmo nome e sobrenome
+    async function verificarFuncionarioExistente(nome, sobrenome) {
+      const funcionariosRef = collection(db, "funcionarios");
+      const queryFuncionario = query(funcionariosRef, where("nome", "==", nome), where("sobrenome", "==", sobrenome));
+      const querySnapshot = await getDocs(queryFuncionario);
+      return !querySnapshot.empty; // Retorna true se já existe um funcionário com o mesmo nome e sobrenome
+    }
+    
+    // Função para salvar o horário de almoço em uma subcoleção "horarios"
+    async function salvarNome() {
+      const nomeFunc = document.getElementById("nomeFuncionario").value;
+      const sobrenomeFunc = document.getElementById("sobrenomeFuncionario").value;
+      const horaAlmoco = document.getElementById("horaAlmoco").value;
+    
+      if (nomeFunc.trim() !== "" && horaAlmoco.trim() !== "") {
+        // Verifica se o funcionário já existe
+        const funcionarioJaExiste = await verificarFuncionarioExistente(nomeFunc, sobrenomeFunc);
+    
+        if (!funcionarioJaExiste) {
+          // Adiciona o documento para a coleção "funcionarios"
+          const funcionarioRef = await addDoc(collection(db, "funcionarios"), {
+            nome: nomeFunc,
+            sobrenome: sobrenomeFunc
+            // Adicione mais campos conforme necessário
+          });
+    
+          // Obtém o ID do documento recém-criado
+          funcionarioId = funcionarioRef.id;
+    
+          // Adiciona o horário de almoço à subcoleção "horarios"
+          salvarHorarioAlmoco(funcionarioId, horaAlmoco);
+        } else {
+          alert("Este funcionário já existe."); // Trate conforme necessário
         }
-    });
-    //ou ao clicar fora
-    nomeInput.addEventListener("blur", function () {
-        // Ação ao sair do campo
-        console.log("Hora almoço:", nomeInput.value);
+      } else {
+        // Nome ou horário de almoço não foram informados, exibir pop-up
+        alert("O nome e o horário de almoço são obrigatórios. Por favor, informe ambos.");
+      }
+    }
+    
+    // Função para salvar o horário de almoço em uma subcoleção "horarios"
+    function salvarHorarioAlmoco(funcionarioId, horaAlmoco) {
+      // Adiciona o horário de almoço à subcoleção "horarios"
+      addDoc(collection(db, `funcionarios/${funcionarioId}/horarios`), {
+        horaAlmoco: horaAlmoco
+        // Adicione mais campos de horário conforme necessário
+      })
+        .then((docRef) => {
+          console.log("Horário de almoço salvo com ID:", docRef.id);
+        })
+        .catch((error) => {
+          console.error("Erro ao salvar horário de almoço:", error);
+        });
+    }
+    
+    // Obtém referência para o botão
+    const registrarBtn2 = document.getElementById("registrarBtn2");
+    
+    // Adiciona o ouvinte de evento de clique ao botão
+    registrarBtn2.addEventListener("click", function () {
+      salvarNome();
+      // Não é necessário chamar salvarHorarioAlmoco aqui, pois essa função já é chamada dentro de salvarNome
     });
     */
+    /////////////////////////
+    ////disa semana/////
+
+    function toggleClass(element) {
+        element.classList.toggle("active");
+    }
+
+    var diasAtivos = [];
+
+    function toggleDay(day) {
+        var index = diasAtivos.indexOf(day);
+
+        if (index === -1) {
+            diasAtivos.push(day);
+        } else {
+            diasAtivos.splice(index, 1);
+        }
+
+        var allLists = document.querySelectorAll('.dias_semana_campos');
+        allLists.forEach(function (list) {
+            var listDay = list.id.split('-')[0];
+            if (diasAtivos.includes(listDay)) {
+                list.classList.add('active');
+            } else {
+                list.classList.remove('active');
+            }
+        });
+
+        console.log(diasAtivos);
+    }
+
+    var links = document.querySelectorAll(".dia-link");
+
+    links.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            toggleClass(this);
+            toggleDay(this.dataset.day);
+        });
+    });
+
 });

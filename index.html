@@ -65,9 +65,14 @@
     <form class="form_main">
       <h3>Preencha os dados abaixo</h3>
       <!--Campo nome funcionario-->
-      <label for="nomeFuncionario"></label>
-      <input class="campo_nome_funcionario" type="text" id="nomeFuncionario" name="nomeFuncionario"
-        placeholder="Nome do Funcionário Aqui">
+      <div class="div-campo1">
+        <label for="nomeFuncionario"></label>
+        <input class="campo-tipo1" type="text" id="nomeFuncionario" name="nomeFuncionario"
+          placeholder="Nome do Funcionário">
+        <label for="sobrenomeFuncionario"></label>
+        <input class="campo-tipo1" type="text" id="sobrenomeFuncionario" name="sobrenomeFuncionario"
+          placeholder="Sobrenome">
+      </div>
       <h3>Escala de trabalho diária</h3>
 
       <!--Slide1-->
@@ -91,63 +96,72 @@
           </svg></button>
       </div>
       <!--fim slide1-->
-
+      <!--
       <h3>Horário de almoço</h3>
-      <label for="horaAlmoco"></label>
-      <input class="campo_hora_almoco" type="text" id="horaAlmoco" name="horaAlmoco" placeholder="01:00:00">
+      <div class="div-campo1">
+        <label for="horaAlmoco"></label>
+        <input class="campo-tipo1" type="text" id="horaAlmoco" name="horaAlmoco" placeholder="01:00:00">
+        <button class="btn" type="button" id="registrarBtn2">Registrar</button>
+      </div>-->
+
+      <div class="selecao_dias">
+        <a href="#" class="dia-link" data-day="domingo">Domingo</a>
+        <a href="#" class="dia-link" data-day="segunda">Segunda</a>
+        <a href="#" class="dia-link" data-day="terca">Terca</a>
+        <a href="#" class="dia-link" data-day="quarta">Quarta</a>
+        <a href="#" class="dia-link" data-day="quinta">Quinta</a>
+        <a href="#" class="dia-link" data-day="sexta">Sexta</a>
+        <a href="#" class="dia-link" data-day="sabado">Sábado</a>
+      </div>
       <section class="dias_semana">
-        <h3>Dias da Semana</h3>
-        <div class="dias_semana_campos">
-          <div class="dias">Segunda</div>
-          <label for="entrada">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
-          <label for="entrada">Saída:</label>
-          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
-        </div>
-        <div class="dias_semana_campos">
-          <div class="dias">Terça</div>
-          <label for="entrada">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
-          <label for="entrada">Saída:</label>
-          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
-        </div>
-        <div class="dias_semana_campos">
-          <div class="dias">Quarta</div>
-          <label for="entrada">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
-          <label for="entrada">Saída:</label>
-          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
-        </div>
-        <div class="dias_semana_campos">
-          <div class="dias">Quinta</div>
-          <label for="entrada">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
-          <label for="entrada">Saída:</label>
-          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
-        </div>
-        <div class="dias_semana_campos">
-          <div class="dias">Sexta</div>
-          <label for="entrada">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
-          <label for="entrada">Saída:</label>
-          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
-        </div>
-        <div class="dias_semana_campos">
-          <div class="dias">Sábado</div>
-          <label for="entrada">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
-          <label for="entrada">Saída:</label>
-          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
-        </div>
-        <div class="dias_semana_campos">
+        <div class="dias_semana_campos" id="domingo">
           <div class="dias">Domingo</div>
-          <label for="entrada">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entrada" name="entrada" placeholder="">
-          <label for="entrada">Saída:</label>
-          <input class="campo_saida" type="text" id="entrada" name="entrada" placeholder="">
+          <label for="entrada1">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada1" name="entrada1" placeholder="">
+          <label for="saida1">Saída:</label>
+          <input class="campo_saida" type="text" id="saida1" name="saida1" placeholder="">
         </div>
-        <div>
-          <h2 id="resultado"></h2>
+        <div class="dias_semana_campos" id="segunda">
+          <div class="dias">Segunda</div>
+          <label for="entrada2">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada2" name="entrada2" placeholder="">
+          <label for="saida2">Saída:</label>
+          <input class="campo_saida" type="text" id="saida2" name="saida2" placeholder="">
+        </div>
+        <div class="dias_semana_campos" id="terca">
+          <div class="dias">Terça</div>
+          <label for="entrada3">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada3" name="entrad3" placeholder="">
+          <label for="saida3">Saída:</label>
+          <input class="campo_saida" type="text" id="saida3" name="saida3" placeholder="">
+        </div>
+        <div class="dias_semana_campos" id="quarta">
+          <div class="dias">Quarta</div>
+          <label for="entrada4">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada4" name="entrad4" placeholder="">
+          <label for="saida4">Saída:</label>
+          <input class="campo_saida" type="text" id="saida4" name="saida4" placeholder="">
+        </div>
+        <div class="dias_semana_campos" id="quinta">
+          <div class="dias">Quinta</div>
+          <label for="entrada5">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada5" name="entrad5" placeholder="">
+          <label for="saida5">Saída:</label>
+          <input class="campo_saida" type="text" id="saida5" name="saida5" placeholder="">
+        </div>
+        <div class="dias_semana_campos" id="sexta">
+          <div class="dias">Sexta</div>
+          <label for="entrada6">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada6" name="entrad6" placeholder="">
+          <label for="saida6">Saída:</label>
+          <input class="campo_saida" type="text" id="saida6" name="saida6" placeholder="">
+        </div>
+        <div class="dias_semana_campos" id="sabado">
+          <div class="dias">Sábado</div>
+          <label for="entrada7">Entrada:</label>
+          <input class="campo_entrada" type="text" id="entrada7" name="entrad7" placeholder="">
+          <label for="saida7">Saída:</label>
+          <input class="campo_saida" type="text" id="saida7" name="saida7" placeholder="">
         </div>
       </section>
     </form>
@@ -160,4 +174,5 @@
     </p>
   </footer>
 </body>
+
 </html>
