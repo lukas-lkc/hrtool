@@ -165,14 +165,13 @@
     /* Cor de fundo de backup */
 }
 
-.form_main h3{
+.form_main h3 {
     font-size: 30px;
     padding: 30px 0px 10px 15px;
-    
+
 }
 
-.campo-tipo1
-{
+.campo-tipo1 {
     color: var(--color-dark2);
     font-size: 25px;
     height: 40px;
@@ -182,12 +181,12 @@
     margin-left: 15px;
 }
 
-#horaAlmoco 
-{
+#horaAlmoco {
     text-align: center;
 }
 
-.campo_entrada, .campo_saida{
+.campo_entrada,
+.campo_saida {
     font-size: 25px;
     width: 150px;
     height: 40px;
@@ -201,11 +200,15 @@ label[for^="entrada"] {
     margin: 10px;
     /* Outros estilos desejados */
 }
+
 .campo_entrada {
-    margin: 0px 200px 0px 0px; /* Adiciona margem apenas ao campo de entrada */
+    margin: 0px 200px 0px 0px;
+    /* Adiciona margem apenas ao campo de entrada */
 }
+
 .campo_saida {
-    margin: 0px 0px 0px 0px; /* Adiciona margem apenas ao campo de entrada */
+    margin: 0px 0px 0px 0px;
+    /* Adiciona margem apenas ao campo de entrada */
 }
 
 .selecao_dias {
@@ -214,6 +217,7 @@ label[for^="entrada"] {
     flex-direction: row;
     align-items: center;
 }
+
 .selecao_dias a {
     text-decoration: none;
     margin: 20px;
@@ -233,7 +237,8 @@ label[for^="entrada"] {
 
 
 .dias_semana_campos {
-    display: none; /* Inicia oculto */
+    display: none;
+    /* Inicia oculto */
     text-align: center;
     flex-direction: row;
     align-items: center;
@@ -246,17 +251,24 @@ label[for^="entrada"] {
     background-color: transparent;
 }
 
-.dias{
+.dias {
     text-align: left;
     width: 120px;
     font-size: 30px;
-    
+
 }
 
 .dias_semana_campos.active {
     display: block;
- }
-  /* Mostra quando a classe active está presente */
+}
+
+
+.campo_entrada::placeholder, 
+.campo_saida::placeholder {
+    opacity: 0.8;
+}
+
+/* Mostra quando a classe active está presente */
 /*////////////////////primeiro carrossel////////////////////*/
 .slider_escalas {
     display: flex;
@@ -308,9 +320,10 @@ label[for^="entrada"] {
 }
 
 /*campo1*/
-.div-campo1{
+.div-campo1 {
     display: flex;
 }
+
 .btn {
     display: block;
     text-align: center;
@@ -324,6 +337,10 @@ label[for^="entrada"] {
     margin-bottom: 20px;
     transition: 0.5s;
     margin-left: 15px;
+}
+
+#registrarBtn2{
+    display: none;
 }
 
 .btn:hover {
