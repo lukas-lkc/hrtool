@@ -103,7 +103,7 @@
         <input class="campo-tipo1" type="text" id="horaAlmoco" name="horaAlmoco" placeholder="01:00:00">
         <button class="btn" type="button" id="registrarBtn2">Registrar</button>
       </div>-->
-
+      <!--dias da semana e campos para receber horários de entrada e saída-->
       <div class="selecao_dias">
         <a href="#" class="dia-link" data-day="Domingo">Domingo</a>
         <a href="#" class="dia-link" data-day="Segunda">Segunda</a>
@@ -163,8 +163,28 @@
           <label for="saidaSabado">Saída:</label>
           <input class="campo_saida" type="text" id="saidaSabado" name="saidaSabado" placeholder="18:00">
         </div>
-
+        <!--fim de dias da semana e campos para receber horários de entrada e saída-->
         <button class="btn" type="button" id="registrarBtn2">Registrar</button>
+        <!-- hr extra -->
+        <div class="listaFuncionarios">
+          <button class="btn" type="button" id="registrarBtn3">Carregar</button>
+          <div class="headInfoFuncionarios">
+            <p>Nome</p>
+            <p>Jornada de Trabalho</p>
+            <p>Hora Total</p>
+            <p>Hora Extra</p>
+          </div>
+          <div class="funcionarios" id="detalhesFuncionarios">
+            <div class="infoFuncionarios">
+              <p>Nemo</p>
+              <p>8h</p>
+              <p>09:05 </p>
+              <p>01:05</p>
+              <a>excluir</a>
+            </div>
+          </div>
+        </div>
+        <!-- fim hr extra -->
       </section>
     </form>
   </main>

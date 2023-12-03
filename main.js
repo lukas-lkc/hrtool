@@ -1,5 +1,5 @@
 //espera que o DOM seja carregado
-import { getFirestore, collection, addDoc, query, where, getDocs, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, query, where, getDocs, deleteDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { app } from "/firebaseConfig.js"; // Importa o objeto 'app' do firebaseConfig.js
 document.addEventListener('DOMContentLoaded', function () {
     //firebase
@@ -47,13 +47,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-    //////////////////////make to work sliders
+    //////////////////////slider
     //slider 1
     const slider = document.querySelectorAll('.slide_escala');
     const btnPrev = document.getElementById('prev_btn');
     const btnNext = document.getElementById('next_btn');
 
     let currentSlide = 0;
+    const hoursMap = [6, 8, 12];
 
     function hideSlider() {
         Array.from(slider).forEach(item => item.classList.remove('on'));
@@ -85,88 +86,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     btnNext.addEventListener('click', nextSlider);
     btnPrev.addEventListener('click', prevSlider);
-    /* 
     //////////////////////
     /////salvar dados/////
-    /////campoFuncionario////
     // Declaração da variável para armazenar o ID do funcionário
     let funcionarioId;
 
-    // Função assíncrona para verificar se um funcionário já existe com o mesmo nome e sobrenome
-    async function verificarFuncionarioExistente(nome, sobrenome) {
-        // Referência à coleção "funcionarios"
-        const funcionariosRef = collection(db, "funcionarios");
-
-        // Consulta para verificar se há um funcionário com o mesmo nome e sobrenome
-        const queryFuncionario = query(funcionariosRef, where("nome", "==", nome), where("sobrenome", "==", sobrenome));
-
-        // Obtém o snapshot da consulta
-        const querySnapshot = await getDocs(queryFuncionario);
-
-        // Retorna true se já existe um funcionário com o mesmo nome e sobrenome
-        return !querySnapshot.empty;
-    }
-
-    // Função assíncrona para salvar o nome do funcionário e o horário de almoço
-    async function salvarNome() {
-        // Obtém os valores dos campos de entrada
-        const nomeFunc = document.getElementById("nomeFuncionario").value;
-        const sobrenomeFunc = document.getElementById("sobrenomeFuncionario").value;
-        const horaAlmoco = document.getElementById("horaAlmoco").value;
-
-        // Verifica se o nome do funcionário e o horário de almoço foram informados
-        if (nomeFunc.trim() !== "" && horaAlmoco.trim() !== "") {
-            // Verifica se o funcionário já existe
-            const funcionarioJaExiste = await verificarFuncionarioExistente(nomeFunc, sobrenomeFunc);
-
-            if (!funcionarioJaExiste) {
-                // Adiciona o documento para a coleção "funcionarios"
-                const funcionarioRef = await addDoc(collection(db, "funcionarios"), {
-                    nome: nomeFunc,
-                    sobrenome: sobrenomeFunc
-                    // Adicione mais campos conforme necessário
-                });
-
-                // Obtém o ID do documento recém-criado
-                funcionarioId = funcionarioRef.id;
-
-                // Adiciona o horário de almoço à subcoleção "horarios"
-                salvarHorarioAlmoco(funcionarioId, horaAlmoco);
-            } else {
-                alert("Este funcionário já existe."); // Mensagem de alerta se o funcionário já existir
-            }
-        } else {
-            // Mensagem de alerta se o nome ou horário de almoço não foram informados
-            alert("O nome e o horário de almoço são obrigatórios. Por favor, informe ambos.");
-        }
-    }
-
-    // Função para salvar o horário de almoço em uma subcoleção "horarios"
-    function salvarHorarioAlmoco(funcionarioId, horaAlmoco) {
-        // Adiciona o horário de almoço à subcoleção "horarios"
-        addDoc(collection(db, `funcionarios/${funcionarioId}/horarios`), {
-            horaAlmoco: horaAlmoco
-            // Adicione mais campos de horário conforme necessário
-        })
-            .then((docRef) => {
-                console.log("Horário de almoço salvo com ID:", docRef.id);
-            })
-            .catch((error) => {
-                console.error("Erro ao salvar horário de almoço:", error);
-            });
-    }
-
-    // Obtém referência para o botão de registro
-    const registrarBtn2 = document.getElementById("registrarBtn2");
-
-    // Adiciona um ouvinte de evento de clique ao botão
-    registrarBtn2.addEventListener("click", function () {
-        salvarNome(); // Chama a função para salvar o nome e o horário de almoço
-        // Não é necessário chamar salvarHorarioAlmoco aqui, pois essa função já é chamada dentro de salvarNome
-    });
-    */
-    let funcionarioId;
-
     async function verificarFuncionarioExistente(nome, sobrenome) {
         const funcionariosRef = collection(db, "funcionarios");
         const queryFuncionario = query(funcionariosRef, where("nome", "==", nome), where("sobrenome", "==", sobrenome));
@@ -175,12 +99,13 @@ document.addEventListener('DOMContentLoaded', function () {
         return !querySnapshot.empty;
     }
 
-    // Função para salvar o horário de almoço em uma subcoleção "horarios"
+    // Função para salvar horários na subcoleção "horarios"
     function salvarHorarios(funcionarioId, diaDaSemana, hrEntrada, hrSaida) {
+        //const hrEscala = hoursMap[currentSlide];
         addDoc(collection(db, `funcionarios/${funcionarioId}/horarios`), {
             [diaDaSemana]: {
                 entrada: hrEntrada,
-                saida: hrSaida
+                saida: hrSaida,
             }
         })
             .then((docRef) => {
@@ -195,13 +120,14 @@ document.addEventListener('DOMContentLoaded', function () {
     async function salvarNome() {
         const nomeFunc = document.getElementById("nomeFuncionario").value;
         const sobrenomeFunc = document.getElementById("sobrenomeFuncionario").value;
-
+        const hrEscala = hoursMap[currentSlide];
         if (nomeFunc.trim() !== "" && sobrenomeFunc.trim() !== "" && diasAtivos.length > 0) {
             const funcionarioJaExiste = await verificarFuncionarioExistente(nomeFunc, sobrenomeFunc);
             if (!funcionarioJaExiste) {
                 const funcionarioRef = await addDoc(collection(db, "funcionarios"), {
                     nome: nomeFunc,
-                    sobrenome: sobrenomeFunc
+                    sobrenome: sobrenomeFunc,
+                    escala: hrEscala
                 });
                 funcionarioId = funcionarioRef.id;
 
@@ -269,8 +195,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             }
         });
-
-        console.log(diasAtivos);
     }
 
     var links = document.querySelectorAll(".dia-link");
@@ -282,5 +206,207 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleDay(this.dataset.day);
         });
     });
+
+    ///////////////////////////
+    ////calcular hora extra////
+    //////////////////////////
+    function calcularHorasTotais(horarios, escala) {
+        let horasTotais = 0;
+        let horasExtras = 0;
+
+        // Iterar sobre os horários e calcular a diferença de horas para cada dia
+        horarios.forEach((horario) => {
+            const entrada = new Date(`2000-01-01T${horario.entrada}`);
+            const saida = new Date(`2000-01-01T${horario.saida}`);
+            const diffMillis = saida - entrada;
+            let diffHoras = diffMillis / (1000 * 60 * 60);
+
+            // Subtrair uma hora de almoço do dia atual
+            diffHoras -= 1; // Subtrai 1 hora de almoço
+
+            // Garantir que a diferença de horas não seja negativa
+            diffHoras = Math.max(diffHoras, 0);
+
+            // Adicionar as horas totais do dia (sem subtrair a escala)
+            horasTotais += diffHoras;
+
+            // Subtrair a escala do dia atual para calcular as horas extras do dia
+            const horasExtrasDia = Math.max(diffHoras - escala, 0);
+            horasExtras += horasExtrasDia;
+        });
+
+        // Converter horasTotais para o formato HH:MM
+        const horasInteirasTotais = Math.floor(horasTotais);
+        const minutosDecimaisTotais = (horasTotais - horasInteirasTotais) * 60;
+        const minutosInteirosTotais = Math.round(minutosDecimaisTotais);
+
+        // Formatar as horas totais como HH:MM
+        const horasFormatadasTotais = `${String(horasInteirasTotais).padStart(2, '0')}:${String(minutosInteirosTotais).padStart(2, '0')}`;
+
+        // Converter horasExtras para o formato HH:MM
+        const horasInteirasExtras = Math.floor(horasExtras);
+        const minutosDecimaisExtras = (horasExtras - horasInteirasExtras) * 60;
+        const minutosInteirosExtras = Math.round(minutosDecimaisExtras);
+
+        // Formatar as horas extras como HH:MM
+        const horasFormatadasExtras = `${String(horasInteirasExtras).padStart(2, '0')}:${String(minutosInteirosExtras).padStart(2, '0')}`;
+
+        return {
+            horasTotais: horasFormatadasTotais,
+            horasExtras: horasFormatadasExtras
+        };
+    }
+
+
+    // Função para obter o ID do funcionário com base no nome e sobrenome
+    const detalhesFuncionariosDiv = document.getElementById("detalhesFuncionarios");
+    //const detalhesFuncionariosDiv = document.getElementById("infoFuncionarios");
+    registrarBtn3.addEventListener("click", async function () {
+        try {
+            const idsFuncionarios = await obterTodosIdsFuncionarios();
+
+            // Limpar o conteúdo existente
+            detalhesFuncionariosDiv.innerHTML = "";
+
+            // Para cada ID de funcionário, obter detalhes e exibir na página
+            for (const funcionarioId of idsFuncionarios) {
+                const detalhes = await obterDetalhesFuncionario(funcionarioId);
+
+                // Criar uma div para cada funcionário e adicionar a classe 'funcionario'
+                const divInfoFuncionarios = document.createElement("div");
+                divInfoFuncionarios.classList.add("infoFuncionarios");
+                
+                const pNome = document.createElement("p");
+                pNome.textContent = `${detalhes.nome} ${detalhes.sobrenome}`;
+                
+                const pEscala = document.createElement("p");
+                pEscala.textContent = `${detalhes.escala}`;
+
+                const resultado = calcularHorasTotais(detalhes.horarios, detalhes.escala);
+
+                const pHorasTotais = document.createElement("p");
+                pHorasTotais.textContent = `${resultado.horasTotais}`;
+
+                const pHorasExtras = document.createElement("p");
+                pHorasExtras.textContent = `${resultado.horasExtras}`;
+
+                // Criar um link de "excluir" e adicionar um evento de clique
+                const linkExcluir = document.createElement("a");
+                linkExcluir.href = "#"; // Pode ser "#" ou um link de confirmação/exclusão
+                linkExcluir.textContent = "excluir";
+                //chama função de exclusão
+                linkExcluir.addEventListener("click", async (event) => {
+                    event.preventDefault(); // Impedir o comportamento padrão do link
+                    console.log("Excluir funcionário com ID:", detalhes.id);
+                    await excluirFuncionario(funcionarioId);
+                });
+                // Adicionar os parágrafos e o link à div
+                divInfoFuncionarios.appendChild(pNome);
+                divInfoFuncionarios.appendChild(pEscala);
+                divInfoFuncionarios.appendChild(pHorasTotais);
+                divInfoFuncionarios.appendChild(pHorasExtras);
+                divInfoFuncionarios.appendChild(linkExcluir);
+
+                // Adicionar a div à seção de detalhes dos funcionários
+                detalhesFuncionariosDiv.appendChild(divInfoFuncionarios);
+            }
+        } catch (error) {
+            console.error('Erro ao carregar detalhes dos funcionários: ', error);
+        }
+    });
+
+    // Função para excluir um funcionário
+    // Função para excluir um funcionário do Firestore
+    async function excluirFuncionario(funcionarioId) {
+        try {
+            // Referência para o documento específico do funcionário
+            const funcionarioDocRef = doc(db, 'funcionarios', funcionarioId);
+
+            // Excluir o documento do funcionário
+            await deleteDoc(funcionarioDocRef);
+
+            console.log(`Funcionário com ID ${funcionarioId} excluído com sucesso.`);
+
+            // Recarregue os detalhes dos funcionários após a exclusão
+            await registrarBtn3.click();
+        } catch (error) {
+            console.error('Erro ao excluir funcionário: ', error);
+        }
+    }
+
+
+    /////////////////////////////
+    ////////////////////////////
+    async function obterTodosIdsFuncionarios() {
+        // Referência para a coleção de funcionários
+        const funcionariosRef = collection(db, 'funcionarios');
+
+        // Retornar uma nova Promise para envolver a lógica assíncrona
+        return new Promise(async (resolve, reject) => {
+            try {
+                // Executar a consulta e obter os documentos
+                const querySnapshot = await getDocs(funcionariosRef);
+
+                // Criar um array para armazenar todos os IDs dos funcionários
+                const idsFuncionarios = [];
+
+                // Iterar sobre os documentos e extrair os IDs
+                querySnapshot.forEach((doc) => {
+                    // Adicionar o ID do documento ao array
+                    idsFuncionarios.push(doc.id);
+                });
+
+                // Resolver a Promise com os IDs dos funcionários
+                resolve(idsFuncionarios);
+            } catch (error) {
+                // Rejeitar a Promise se ocorrer um erro
+                console.error('Erro ao obter IDs dos funcionários: ', error);
+                reject(error);
+            }
+        });
+    }
+
+    async function obterDetalhesFuncionario(funcionarioId) {
+        try {
+            // Referência para o documento específico do funcionário
+            const funcionarioDocRef = doc(db, 'funcionarios', funcionarioId);
+
+            // Obter o documento do funcionário
+            const docSnapshot = await getDoc(funcionarioDocRef);
+
+            // Verificar se o documento existe
+            if (docSnapshot.exists()) {
+                // Obter os dados do documento
+                const dadosFuncionario = docSnapshot.data();
+
+                // Obter os horários associados ao funcionário
+                const horariosRef = collection(db, `funcionarios/${funcionarioId}/horarios`);
+                const horariosSnapshot = await getDocs(horariosRef);
+
+                // Mapear os dados dos horários
+                const horarios = [];
+                horariosSnapshot.forEach((doc) => {
+                    const horarioDia = doc.data();
+                    Object.values(horarioDia).forEach((horario) => {
+                        if (horario) {
+                            horarios.push(horario);
+                        }
+                    });
+                });
+                // Retornar os detalhes do funcionário e os horários
+                return {
+                    nome: dadosFuncionario.nome,
+                    sobrenome: dadosFuncionario.sobrenome,
+                    escala: dadosFuncionario.escala,
+                    horarios: horarios
+                };
+            } else {
+                throw new Error(`Funcionário com ID ${funcionarioId} não encontrado.`);
+            }
+        } catch (error) {
+            console.error('Erro ao obter detalhes do funcionário: ', error);
+            throw error; // Propagar o erro para quem chama a função, se necessário
+        }
+    }
 
 });
