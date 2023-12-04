@@ -89,72 +89,55 @@
 }
 
 /*////////////////////sessão 1////////////////////*/
-
+/*Header*/
 .description_top {
     max-width: 1200px;
-    height: 40vh;
+    height: auto;
+    /* alterado para altura automática */
     margin: 0 auto;
-    padding: 10 0px;
+    padding: 10px;
     margin-bottom: 20px;
     display: flex;
     background-color: #1b1b1b;
     /* Cor de fundo de backup */
 }
 
+/*
 .img_back {
-    width: 50%;
-    display: inline-block;
-    /* Adicione regras de estilo específicas para os cartões, se necessário */
+     Adicione regras de estilo específicas para os cartões, se necessário 
 }
-
+*/
 .img_1 {
-    height: 100%;
-    width: 100%;
-    margin-bottom: 10px;
-    /*espaço entre a imagem e oq estiver abaixo*/
-    background-position: center;
-    background-size: cover;
-    /*tenta mostrar o max possível da imagem na área definida*/
-    background-color: gray;
-}
-
-.text_header {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: var(--color-dark2);
+    width: 280px;
+    /* largura desejada */
+    height: 210px;
+    /* altura desejada */
+    object-fit: cover;
+    /* mantém a proporção e corta a imagem se necessário */
 }
 
 .text_top {
-    width: 100%;
-    display: inline-block;
-    /* Adicione regras de estilo específicas para os cartões, se necessário */
-    margin: 1% 3%;
-    /*1% cima/baixo e laterais*/
+    float: right;
+    /* alinhar à direita */
+    width: calc(100% - 370px);
+    /* ajusta o tamanho para acomodar a imagem */
+    padding: 0px;
+    margin: 10px;
+    /* espaçamento interno para separar do lado direito */
 }
 
 .text_top h1 {
-    font-size: 50px;
-    height: 20%;
-    width: 100%;
+    font-size: 30px;
     margin-bottom: 10px;
-    /*espaço entre a imagem e oq estiver abaixo*/
-    background-position: center;
-    background-size: cover;
-    /*tenta mostrar o max possível da imagem na área definida*/
 }
 
 .text_top p {
-    height: 80%;
-    width: 100%;
+    font-size: 15px;
     margin-bottom: 10px;
-    padding-top: 10px;
-    padding-right: 40px;
-    /*espaço entre a imagem e oq estiver abaixo*/
-    background-position: center;
-    background-size: cover;
-    /*tenta mostrar o max possível da imagem na área definida*/
+    padding-right: 20px;
 }
 
+/*fHeader*/
 /*FORM*/
 .form_main {
     max-width: 1200px;
@@ -450,12 +433,6 @@ footer {
 
 /* Smartphone */
 @media (max-width: 640px) {
-
-    /*
-    background-color: var(--color-dark4);
-    margin-left: 20px;
-    margin-right: 20px;
-    */
     .nav_header {
         position: absolute;
         flex-direction: column;
@@ -492,6 +469,50 @@ footer {
     }
 
     /*///////*/
+    /*/S01/*/
+    .description_top {
+        max-width: 100%;
+        /* alterado para 100% para garantir responsividade */
+        height: auto;
+        margin: 0 auto;
+        padding: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        /* alterado para coluna para colocar a imagem em cima e o texto embaixo */
+        background-color: #1b1b1b;
+        /* Cor de fundo de backup */
+    }
+
+    .img_1 {
+        width: 100%;
+        /* ajustado para ocupar a largura completa do contêiner pai */
+        height: auto;
+        /* ajustado para altura automática para manter a proporção */
+    }
+
+    .text_top {
+        width: 100%;
+        /* ocupar a largura completa do contêiner pai */
+        margin: 10px;
+        /* espaçamento interno para separar o conteúdo */
+        box-sizing: border-box;
+        /* incluir padding na largura total */
+    }
+
+    .text_top h1 {
+        font-size: 24px;
+        /* ajustado o tamanho da fonte para telas menores */
+        margin-bottom: 10px;
+    }
+
+    .text_top p {
+        font-size: 14px;
+        /* ajustado o tamanho da fonte para telas menores */
+        margin-bottom: 10px;
+    }
+
+    /*/FS01/*/
     /*/S02/*/
     .form_main h3 {
         font-size: 20px;
