@@ -1,6 +1,6 @@
 //espera que o DOM seja carregado
-import { getFirestore, collection, addDoc, query, where, getDocs, deleteDoc, doc, getDoc } from "https://cdn.jsdelivr.net/npm/firebase@9.0.2/firestore.js";
-import { app } from "/firebaseConfig.js"; // Importa o objeto 'app' do firebaseConfig.js
+import { getFirestore, collection, addDoc, query, where, getDocs, deleteDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { app } from "./firebaseConfig.js"; // Importa o objeto 'app' do firebaseConfig.js
 document.addEventListener('DOMContentLoaded', function () {
     //firebase
     const db = getFirestore(app);

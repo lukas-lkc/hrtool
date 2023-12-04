@@ -1,6 +1,5 @@
-//import { initializeApp } from ".../firebase/app";
-import { getAuth } from ".../firebase/auth";
-//import { getFirestore } from ".../firebase/firestore";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBDykdiCuuMJksQvJ4y2tGkKKdIX3PprBw",
   authDomain: "hrtool-c763b.firebaseapp.com",
@@ -15,14 +14,4 @@ const firebaseConfig = {
 // Inicialize o Firebase
 const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
-
-export { app};
-
-onAuthStateChanged(auth, user => {
-  if (user != null) {
-    console.log('logged in!');
-  } else {
-    console.log('no user');
-  }
-});
+export { app };
