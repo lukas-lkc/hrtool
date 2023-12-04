@@ -100,21 +100,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Função para salvar horários na subcoleção "horarios"
-    function salvarHorarios(funcionarioId, diaDaSemana, hrEntrada, hrSaida) {
-        //const hrEscala = hoursMap[currentSlide];
-        addDoc(collection(db, `funcionarios/${funcionarioId}/horarios`), {
-            [diaDaSemana]: {
-                entrada: hrEntrada,
-                saida: hrSaida,
-            }
-        })
-            .then((docRef) => {
-                console.log("Horários salvos com ID:", docRef.id);
+    async function salvarHorarios(funcionarioId, diaDaSemana, hrEntrada, hrSaida) {
+        return new Promise((resolve, reject) => {
+            addDoc(collection(db, `funcionarios/${funcionarioId}/horarios`), {
+                [diaDaSemana]: {
+                    entrada: hrEntrada,
+                    saida: hrSaida,
+                }
             })
-            .catch((error) => {
-                console.error("Erro ao salvar horários:", error);
-            });
-        alert(`Funcionário e horários registrados! :)`);
+                .then((docRef) => {
+                    console.log("Horários salvos com ID:", docRef.id);
+                    resolve();
+                })
+                .catch((error) => {
+                    console.error("Erro ao salvar horários:", error);
+                    reject(error);
+                });
+        });
     }
 
     async function salvarNome() {
@@ -132,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 funcionarioId = funcionarioRef.id;
 
                 // Itera sobre todos os dias ativos
-                for (const diaAtivo of diasAtivos) {
+                const promises = diasAtivos.map(async (diaAtivo) => {
                     // Obtém os valores dos campos de entrada e saída para o dia ativo
                     const hrEntrada = document.getElementById(`entrada${diaAtivo}`);
                     const hrSaida = document.getElementById(`saida${diaAtivo}`);
@@ -142,12 +144,22 @@ document.addEventListener('DOMContentLoaded', function () {
                         const hrSaidaValue = hrSaida.value;
 
                         if (hrEntradaValue.trim() !== "" && hrSaidaValue.trim() !== "") {
-                            salvarHorarios(funcionarioId, diaAtivo, hrEntradaValue, hrSaidaValue);
+                            return salvarHorarios(funcionarioId, diaAtivo, hrEntradaValue, hrSaidaValue);
                         } else {
-                            alert(`Os campos de entrada/saída são obrigatórios para o dia ${diaAtivo}.`);
+                            return Promise.reject(`Os campos de entrada/saída são obrigatórios para o dia ${diaAtivo}.`);
                         }
                     } else {
-                        alert(`Campos de entrada/saída não encontrados para o dia ${diaAtivo}.`);
+                        return Promise.reject(`Campos de entrada/saída não encontrados para o dia ${diaAtivo}.`);
+                    }
+                });
+
+                if (promises.length > 0) {
+                    try {
+                        await Promise.all(promises);
+                        alert("Clique em Recarregar! :)"); // Exibir alerta após todas as promessas serem cumpridas
+                    } catch (error) {
+                        console.error("Erro ao salvar horários:", error);
+                        // Trate o erro conforme necessário
                     }
                 }
             } else {
