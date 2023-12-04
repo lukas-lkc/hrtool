@@ -51,7 +51,7 @@
   </header>
   <!-- main -->
   <main tabindex="0" class="container" id="container">
-    <section class="description_top">
+    <!--<section class="description_top">
       <div class="img_back">
         <img class="img_1" src="https://i.postimg.cc/FHYBZDqk/rh.jpg" alt="rh_image" />
       </div class="text_header">
@@ -65,7 +65,7 @@
           Otimize a gestão de tempo e promova a conformidade com a legislação
           trabalhista com o RH TempoCerto</p>
       </div>
-      <!--form-->
+      form-->
     </section>
     <form class="form_main">
       <h3>Preencha os dados do funcionário:</h3>
@@ -120,58 +120,72 @@
       <section class="dias_semana">
         <div class="dias_semana_campos" id="Domingo">
           <div class="dias">Domingo</div>
-          <label for="entradaDomingo">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entradaDomingo" name="entradaDomingo" placeholder="09:00">
-          <label for="saidaDomingo">Saída:</label>
-          <input class="campo_saida" type="text" id="saidaDomingo" name="saidaDomingo" placeholder="18:00">
+          <div class="horarios">
+            <label for="entradaDomingo">Entrada:</label>
+            <input class="campo_entrada" type="text" id="entradaDomingo" name="entradaDomingo" placeholder="09:00">
+            <label for="saidaDomingo">Saída:</label>
+            <input class="campo_saida" type="text" id="saidaDomingo" name="saidaDomingo" placeholder="18:05">
+          </div>
         </div>
         <div class="dias_semana_campos" id="Segunda">
           <div class="dias">Segunda</div>
-          <label for="entradaSegunda">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entradaSegunda" name="entradaSegunda" placeholder="09:00">
-          <label for="saidaSegunda">Saída:</label>
-          <input class="campo_saida" type="text" id="saidaSegunda" name="saidaSegunda" placeholder="18:00">
+          <div class="horarios">
+            <label for="entradaSegunda">Entrada:</label>
+            <input class="campo_entrada" type="text" id="entradaSegunda" name="entradaSegunda" placeholder="09:00">
+            <label for="saidaSegunda">Saída:</label>
+            <input class="campo_saida" type="text" id="saidaSegunda" name="saidaSegunda" placeholder="18:10">
+          </div>
         </div>
         <div class="dias_semana_campos" id="Terca">
-          <div class="dias">Terça</div>
-          <label for="entradaTerca">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entradaTerca" name="entradaTerca" placeholder="09:00">
-          <label for="saidaTerca">Saída:</label>
-          <input class="campo_saida" type="text" id="saidaTerca" name="saidaTerca" placeholder="18:00">
+          <div class="dias">Terca</div>
+          <div class="horarios">
+            <label for="entradaTerca">Entrada:</label>
+            <input class="campo_entrada" type="text" id="entradaTerca" name="entradaTerca" placeholder="09:00">
+            <label for="saidaTerca">Saída:</label>
+            <input class="campo_saida" type="text" id="saidaTerca" name="saidaTerca" placeholder="18:30">
+          </div>
         </div>
         <div class="dias_semana_campos" id="Quarta">
           <div class="dias">Quarta</div>
-          <label for="entradaQuarta">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entradaQuarta" name="entradaQuarta" placeholder="09:00">
-          <label for="saidaQuarta">Saída:</label>
-          <input class="campo_saida" type="text" id="saidaQuarta" name="saidaQuarta" placeholder="18:00">
+          <div class="horarios">
+            <label for="entradaQuarta">Entrada:</label>
+            <input class="campo_entrada" type="text" id="entradaQuarta" name="entradaQuarta" placeholder="09:05">
+            <label for="saidaQuarta">Saída:</label>
+            <input class="campo_saida" type="text" id="saidaQuarta" name="saidaQuarta" placeholder="18:15">
+          </div>
         </div>
         <div class="dias_semana_campos" id="Quinta">
           <div class="dias">Quinta</div>
-          <label for="entradaQuinta">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entradaQuinta" name="entradaQuinta" placeholder="09:00">
-          <label for="saidaQuinta">Saída:</label>
-          <input class="campo_saida" type="text" id="saidaQuinta" name="saidaQuinta" placeholder="18:00">
+          <div class="horarios">
+            <label for="entradaQuinta">Entrada:</label>
+            <input class="campo_entrada" type="text" id="entradaQuinta" name="entradaQuinta" placeholder="09:03">
+            <label for="saidaQuinta">Saída:</label>
+            <input class="campo_saida" type="text" id="saidaQuinta" name="saidaQuinta" placeholder="18:10">
+          </div>
         </div>
         <div class="dias_semana_campos" id="Sexta">
           <div class="dias">Sexta</div>
-          <label for="entradaSexta">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entradaSexta" name="entradaSexta" placeholder="09:00">
-          <label for="saidaSexta">Saída:</label>
-          <input class="campo_saida" type="text" id="saidaSexta" name="saidaSexta" placeholder="18:00">
+          <div class="horarios">
+            <label for="entradaSexta">Entrada:</label>
+            <input class="campo_entrada" type="text" id="entradaSexta" name="entradaSexta" placeholder="09:00">
+            <label for="saidaSexta">Saída:</label>
+            <input class="campo_saida" type="text" id="saidaSexta" name="saidaSexta" placeholder="19:02">
+          </div>
         </div>
         <div class="dias_semana_campos" id="Sabado">
-          <div class="dias">Sábado</div>
-          <label for="entradaSabado">Entrada:</label>
-          <input class="campo_entrada" type="text" id="entradaSabado" name="entradaSabado" placeholder="09:00">
-          <label for="saidaSabado">Saída:</label>
-          <input class="campo_saida" type="text" id="saidaSabado" name="saidaSabado" placeholder="18:00">
+          <div class="dias">Sabado</div>
+          <div class="horarios">
+            <label for="entradaSabado">Entrada:</label>
+            <input class="campo_entrada" type="text" id="entradaSabado" name="entradaSabado" placeholder="09:00">
+            <label for="saidaSabado">Saída:</label>
+            <input class="campo_saida" type="text" id="saidaSabado" name="saidaSabado" placeholder="18:00">
+          </div>
         </div>
         <!--fim de dias da semana e campos para receber horários de entrada e saída-->
         <button class="btn" type="button" id="registrarBtn2">Registrar</button>
         <!-- hr extra -->
         <div class="listaFuncionarios">
-          <button class="btn" type="button" id="registrarBtn3">Carregar</button>
+          <button class="btn" type="button" id="registrarBtn3">Recarregar</button>
           <div class="headInfoFuncionarios">
             <p>Nome</p>
             <p>Jornada de Trabalho</p>

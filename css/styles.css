@@ -196,7 +196,7 @@
     color: var(--color-dark2);
 }
 
-.listaFuncionarios{
+.listaFuncionarios {
     margin-top: 20px;
     background-color: var(--color-dark2);
     padding: 10px;
@@ -211,7 +211,7 @@
     margin: 0px 10px 10px 0px;
 }
 
-.headInfoFuncionarios{
+.headInfoFuncionarios {
     background-color: #1b1b1b;
     display: flex;
     flex-direction: row;
@@ -221,7 +221,7 @@
     padding-right: 210px;
 }
 
-.headInfoFuncionarios p{
+.headInfoFuncionarios p {
     color: #f0f0f0;
     font-weight: bold;
     text-align: left;
@@ -256,7 +256,8 @@
     margin-block-end: 1em;
     margin-inline-start: 15px;
     margin-inline-end: 15px;
-    text-decoration: none; /* Adicione sublinhado aos links, por exemplo */
+    text-decoration: none;
+    /* Adicione sublinhado aos links, por exemplo */
 }
 
 .infoFuncionarios a:hover {
@@ -308,11 +309,6 @@ label[for^="entrada"] {
     color: var(--color-green1);
     transition: 1s;
 }
-
-
-
-
-
 
 .dias_semana_campos {
     display: none;
@@ -495,6 +491,161 @@ footer {
         padding: 0px;
     }
 
+    /*///////*/
+    /*/S02/*/
+    .form_main h3 {
+        font-size: 20px;
+    }
+
+    .campo-tipo1 {
+        font-size: 20px;
+        height: 40px;
+        width: 155px;
+        padding: 0 10px;
+        text-align: left;
+        margin-left: 10px;
+    }
+
+    /*/FS02/*/
+
+    /*/S03/*/
+    .slider_escalas {
+        display: flex;
+        /*uma opção fica ao lado da outra*/
+        width: 100%;
+        min-height: 70px;
+        align-items: center;
+        justify-content: center;
+        gap: 5em;
+        /*distância dos botões das imagens*/
+    }
+
+    #prev_btn,
+    #next_btn {
+        width: 50px;
+        height: 50px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    #prev_btn svg,
+    #next_btn svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container_opcoes {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 10px;
+        /*transition: transform 0.5s ease;*/
+    }
+
+    /*svg*/
+    .slide_escala {
+        text-align: center;
+        /*opacity: 0;*/
+        transition: opacity .2s;
+        position: absolute;
+        /*width: 100%; para img*/
+        font-size: 30px;
+    }
+
+    /*/FS03/*/
+    /*/S04/*/
+    .selecao_dias {
+        margin-top: 15px;
+        line-height: 50px;
+        text-align: center;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .selecao_dias a {
+        text-decoration: none;
+        color: var(--color-white);
+        transition: 1s;
+        font-weight: bold;
+    }
+
+    /*/FS04/*/
+    /*/S05/*/
+    .dias_semana_campos {
+
+        flex-direction: column;
+        padding: 0px;
+        margin: 20px;
+    }
+
+    .dias {
+        font-size: 25px;
+        margin-bottom: 10px;
+        /* Adiciona um espaço abaixo da div "Domingo" */
+    }
+
+    .horarios {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .campo_entrada,
+    .campo_saida {
+        font-size: 25px;
+        width: 150px;
+        height: 40px;
+        padding: 0 10px;
+        margin: 0px 0px;
+        color: var(--color-dark2);
+    }
+
+
+
+    #registrarBtn2 {
+        margin: 40px 0px 40px 15px;
+    }
+
+    /*/FS05/*/
+    /*/S06/*/
+    #registrarBtn3 {
+        margin: 0px 0px 20px 5px;
+    }
+
+    .headInfoFuncionarios p {
+        text-align: center;
+        font-size: 15px;
+        margin: 15px;
+    }
+
+    /**/
+    .funcionarios p {
+        align-items: center;
+        text-align: left;
+        font-size: 25px;
+        margin: 10px 10px 0px 10px;
+    }
+
+    .funcionarios a {
+        background-color: #1e7fa7;
+        color: var(--color-white);
+        border-radius: 12px;
+        width: 80px;
+        height: 25px;
+        margin: 10px 10px 10px 10px;
+    }
+
+    .infoFuncionarios {
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    /*/FS06/*/
+    /*///////*/
     footer {
         padding: 40px;
     }
