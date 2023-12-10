@@ -331,18 +331,27 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função para excluir um funcionário do Firestore
     async function excluirFuncionario(funcionarioId) {
         try {
-            // Referência para a coleção de <link>funcionários</link>
+            // Excluir as subcoleções aninhadas, se existirem. Quando existe, o funcionario não é excluído totalmente
+            //motivo da issue #14 no GitHub
+            const subCollections = await getDocs(collection(db, 'funcionarios', funcionarioId, 'horarios'));
+            subCollections.forEach(async (subCollection) => {
+                const docs = await getDocs(subCollection.ref);
+                docs.forEach(async (doc) => {
+                    await deleteDoc(doc.ref);
+                });
+                await deleteDoc(subCollection.ref);
+            });
+            // Referência para a coleção de funcionários
             const funcionariosCollectionRef = collection(db, 'funcionarios');
     
-            // Excluir o documento do <link>funcionário</link> usando o ID
+            // Excluir o documento do funcionário usando o ID
             await deleteDoc(doc(funcionariosCollectionRef, funcionarioId));
     
             console.log(`Funcionário com ID ${funcionarioId} excluído com sucesso.`);
-    
-            // Recarregue os detalhes dos <link>funcionários</link> após a exclusão
+            // Recarregar os detalhes dos funcionários após a exclusão
             await registrarBtn3.click();
         } catch (error) {
-            console.error('Erro ao excluir <link>funcionário</link>: ', error);
+            console.error('Erro ao excluir funcionário: ', error);
         }
     }
 
