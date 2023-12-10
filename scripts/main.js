@@ -331,21 +331,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função para excluir um funcionário do Firestore
     async function excluirFuncionario(funcionarioId) {
         try {
-            // Referência para o documento específico do funcionário
-            const funcionarioDocRef = doc(db, 'funcionarios', funcionarioId);
-
-            // Excluir o documento do funcionário
-            await deleteDoc(funcionarioDocRef);
-
+            // Referência para a coleção de <link>funcionários</link>
+            const funcionariosCollectionRef = collection(db, 'funcionarios');
+    
+            // Excluir o documento do <link>funcionário</link> usando o ID
+            await deleteDoc(doc(funcionariosCollectionRef, funcionarioId));
+    
             console.log(`Funcionário com ID ${funcionarioId} excluído com sucesso.`);
-
-            // Recarregue os detalhes dos funcionários após a exclusão
+    
+            // Recarregue os detalhes dos <link>funcionários</link> após a exclusão
             await registrarBtn3.click();
         } catch (error) {
-            console.error('Erro ao excluir funcionário: ', error);
+            console.error('Erro ao excluir <link>funcionário</link>: ', error);
         }
     }
-
 
     /////////////////////////////
     ////////////////////////////
