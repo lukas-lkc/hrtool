@@ -1,5 +1,5 @@
 //espera que o DOM seja carregado
-import { getFirestore, collection, addDoc, query, where, getDocs, deleteDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, query, where, getDocs, deleteDoc, doc, getDoc, updateDoc, writeBatch } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
 import { app } from "./firebaseConfig.js"; // Importa o objeto 'app' do firebaseConfig.js
 document.addEventListener('DOMContentLoaded', function () {
     //firebase
@@ -287,10 +287,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Criar uma div para cada funcionário e adicionar a classe 'funcionario'
                 const divInfoFuncionarios = document.createElement("div");
                 divInfoFuncionarios.classList.add("infoFuncionarios");
-                
+
                 const pNome = document.createElement("p");
                 pNome.textContent = `${detalhes.nome} ${detalhes.sobrenome}`;
-                
+
                 const pEscala = document.createElement("p");
                 pEscala.textContent = `${detalhes.escala}`;
 
@@ -327,34 +327,48 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Função para excluir um funcionário
     // Função para excluir um funcionário do Firestore
+    async function deleteCollection(collectionRef) {
+        const snapshot = await getDocs(collectionRef);
+
+        if (snapshot.size === 0) {
+            // Quando não há mais documentos para excluir, a função pode retornar
+            return;
+        }
+
+        // Excluir documentos em lotes
+        const batch = writeBatch(db);
+        snapshot.docs.forEach((doc) => {
+            batch.delete(doc.ref);
+        });
+        await batch.commit();
+
+        // Recursivamente excluir o próximo lote
+        return deleteCollection(collectionRef);
+    }
+
     async function excluirFuncionario(funcionarioId) {
         try {
-            // Excluir as subcoleções aninhadas, se existirem. Quando existe, o funcionario não é excluído totalmente
-            //motivo da issue #14 no GitHub
-            const subCollections = await getDocs(collection(db, 'funcionarios', funcionarioId, 'horarios'));
-            subCollections.forEach(async (subCollection) => {
-                const docs = await getDocs(subCollection.ref);
-                docs.forEach(async (doc) => {
-                    await deleteDoc(doc.ref);
-                });
-                await deleteDoc(subCollection.ref);
-            });
-            // Referência para a coleção de funcionários
-            const funcionariosCollectionRef = collection(db, 'funcionarios');
-    
-            // Excluir o documento do funcionário usando o ID
-            await deleteDoc(doc(funcionariosCollectionRef, funcionarioId));
-    
+            // Referência para a coleção horarios do funcionário
+            const funcionarioHorariosRef = collection(db, `funcionarios/${funcionarioId}/horarios`);
+            // Excluir horarios do funcionário
+            await deleteCollection(funcionarioHorariosRef);
+
+            // Referência para o documento específico do funcionário
+            const funcionarioDocRef = doc(db, 'funcionarios', funcionarioId);
+            // Excluir funcionário
+            await deleteDoc(funcionarioDocRef);
+
             console.log(`Funcionário com ID ${funcionarioId} excluído com sucesso.`);
-            // Recarregar os detalhes dos funcionários após a exclusão
-            await registrarBtn3.click();
         } catch (error) {
-            console.error('Erro ao excluir funcionário: ', error);
+            console.error('Erro ao excluir a subcoleção "horarios" do funcionário:', error);
         }
     }
 
+
+    // Excluir as subcoleções aninhadas
+    //Quando existe, o funcionario não é excluído totalmente
+    //motivo da issue #14 no GitHub
     /////////////////////////////
     ////////////////////////////
     async function obterTodosIdsFuncionarios() {
