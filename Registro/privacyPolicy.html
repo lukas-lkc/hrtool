@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--limita o usuário ao viewport, não deixa dar zoom-->
+    <title>HR Tool</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/term&policy.css" />
+    <link rel="stylesheet" href="./styles/headerBar.css" /><!--local-->
+    <script type="module" src="./scripts/script.js"></script>
+    <script src="./scripts/headerBar.js"></script>
+</head>
+
+<body>
+    <header class="header_bar" id="header_bar">
+        <button class="btn_icon_header" id="showSidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg>
+        </button>
+        <h1>RH TempoCerto</h1>
+        <!--caso queira por imagem
+          <div class="logo_header">
+            <img src="link" class="img_logo" alt"legenda">
+          </div>
+          -->
+        <nav class="nav_header" id="nav_header">
+            <button class="btn_icon_header" id="closeSidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </button>
+            <a href="javascript:void(0);" onclick="history.back();" class="active">Voltar</a>
+        </nav>
+    </header>
+
+    <section class="text">
+        <h1>Política de Privacidade</h1>
+        <p>
+            A sua privacidade é importante para nós. Esta Política de Privacidade descreve como coletamos, utilizamos e
+            protegemos as informações pessoais que você fornece ao utilizar a nossa página e ferramenta de RH. Ao
+            utilizar a nossa página e fornecer suas informações pessoais, você concorda com as práticas descritas nesta
+            Política de Privacidade.
+        </p>
+        <h2>1. Coleta de Informações</h2>
+        <p>
+            - Coletamos as informações pessoais que você fornece, como nome e e-mail, no momento do registro em nossa
+            página.<br>
+            - Coletamos informações sobre o nome do funcionário, horário de entrada e saída e porcentagens de pagamento
+            de hora extra na nossa ferramenta de RH.
+        </p>
+        <h2>2. Uso das Informações</h2>
+        <p>
+            - Utilizamos as informações pessoais fornecidas no registro para criar e gerenciar a sua conta na nossa
+            página.<br>
+            - Utilizamos as informações coletadas na nossa ferramenta de RH para realizar cálculos de hora extra e gerar
+            relatórios para uso interno.
+        </p>
+        <h2>3. Compartilhamento de Informações</h2>
+        <p>
+            - Não compartilhamos suas informações pessoais com terceiros, exceto quando necessário para cumprir com
+            obrigações legais ou a pedido do usuário.<br>
+            - As informações coletadas na ferramenta de RH são armazenadas em nosso sistema e não são compartilhadas com
+            terceiros.
+        </p>
+        <h2>4. Segurança</h2>
+        <p>
+            - Empregamos medidas de segurança adequadas para proteger suas informações pessoais contra acesso não
+            autorizado, alteração, divulgação ou destruição.<br>
+            - Utilizamos criptografia para proteger as informações sensíveis transmitidas pela nossa página.
+        </p>
+        <h2>5. Retenção de Dados</h2>
+        <p>
+            - Manteremos suas informações pessoais pelo tempo necessário para cumprir com as finalidades descritas nesta
+            Política de Privacidade, a menos que uma retenção mais longa seja exigida ou permitida por lei.
+        </p>
+    </section>
+    <footer>
+        <p>
+            <span class="bold">by Lucas Paixão</span>
+            &copy; 2023
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--limita o usuário ao viewport, não deixa dar zoom-->
+    <title>HR Tool</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/term&policy.css" />
+    <link rel="stylesheet" href="./styles/headerBar.css" /><!--local-->
+    <script type="module" src="./scripts/script.js"></script>
+    <script src="./scripts/headerBar.js"></script>
+</head>
+
+<body>
+    <header class="header_bar" id="header_bar">
+        <button class="btn_icon_header" id="showSidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg>
+        </button>
+        <h1>RH TempoCerto</h1>
+        <!--caso queira por imagem
+          <div class="logo_header">
+            <img src="link" class="img_logo" alt"legenda">
+          </div>
+          -->
+        <nav class="nav_header" id="nav_header">
+            <button class="btn_icon_header" id="closeSidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </button>
+            <a href="javascript:void(0);" onclick="history.back();" class="active">Voltar</a>
+        </nav>
+    </header>
+   
+    <section class="text">
+        <h1>Termo de Uso</h1>
+        <p>
+            Ao utilizar a nossa página e ferramenta, você concorda em cumprir com os seguintes termos e condições:
+        </p>
+        <h2>1. Uso Adequado</h2>
+        <p>
+            - Você concorda em utilizar a nossa página e ferramenta de forma ética.<br>
+            - Você é responsável por garantir a veracidade e exatidão das informações fornecidas durante o registro e
+            utilização da ferramenta.
+        </p>
+        <h2>2. Propriedade Intelectual</h2>
+        <p>
+            - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis consequat neque, id ullamcorper metus efficitur ac..
+        </p>
+        <h2>3. Responsabilidade</h2>
+        <p>
+            - As nossas páginas e ferramenta são fornecidas "no estado em que se encontram", sem garantias de qualquer
+            tipo.<br>
+            - Não nos responsabilizamos por eventuais danos causados pelo uso da nossa página ou ferramenta.
+        </p>
+        <h2>4. Suspensão e Cancelamento</h2>
+        <p>
+            - Reservamo-nos o direito de suspender ou cancelar o seu acesso à ferramenta, caso haja violação
+            dos termos e condições estabelecidos.
+        </p>
+    </section>
+    <footer>
+        <p>
+          <span class="bold">by Lucas Paixão</span>
+          &copy; 2023
+        </p>
+      </footer>
+</body>
+</html>

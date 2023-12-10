@@ -1,0 +1,126 @@
+.header_bar {
+    background-color: #008380;
+    height: 56px;
+    /*ou (3.5em = 3,5 x 16) = 56px*/
+    text-align: center;
+    display: flex;
+    /*deixa um bloco ao lado do outro*/
+    /*flex-direction: column; deixa um elemento em baixo do outro em formato de coluna*/
+    flex-direction: row;
+    /*deixa um elemento ao lado do outro linha (vem por default)*/
+    align-items: center;
+    justify-content: space-between;
+    /*distancia entre os blocos, sempre ao extremo*/
+    padding: 0 10%;
+    /* espaçamentos apenas na direit/esquerda*/
+    color: azure;
+}
+
+.header_bar h1 {
+    font-size: 20px;
+    width: 200px;
+}
+
+.nav_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3em;
+}
+
+.nav_header a {
+    text-decoration: none;
+    color: white;
+    transition: 1s;
+    font-weight: bold;
+}
+
+.nav_header a:hover {
+    color: #008380;
+    transition: 1s;
+}
+
+/*aqui deve ser feito posteriormente com JS*/
+.active {
+    background-color: #004644;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn_icon_header {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+.text {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    min-height: 100vh;
+    min-width: 90vh;
+    margin: 20px 300px 20px 300px;
+    padding: 20px 100px;
+    display: grid;
+    place-items: right;
+    color: rgb(15, 15, 15);
+}
+
+.text h1 {
+    margin-top: 20px;
+}
+
+.text h2 {
+    font-size: 20px;
+}
+
+.text p {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+
+
+/*
+@media (max-width: 640px) {
+
+    /*
+    background-color: var(--color-dark4);
+    margin-left: 20px;
+    margin-right: 20px;
+    */
+/*
+    .nav_header {
+        position: absolute;
+        flex-direction: column;
+        top: 0;
+        background-color: #004644;
+        opacity: 0.9;
+        height: 100%;
+        width: 35vw;
+        padding: 1em;
+        animation-duration: 1s;
+        margin-left: -100vw;
+        z-index: 2;
+    }
+
+    @keyframes showSidebar {
+        from {
+            margin-left: -100vw;
+        }
+
+        top {
+            margin-left: -10vw;
+        }
+    }
+
+    .btn_icon_header {
+        display: block;
+    }
+
+    .btn {
+        margin-bottom: 40px;
+    }
+*/
