@@ -17,7 +17,7 @@ const firebaseApp = initializeApp({
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     const auth = getAuth(firebaseApp);
     const db = getFirestore(firebaseApp);
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log('email, senha ou nome invalidos');
             return;
         }
-        
+
         console.log('btn clicado');
         const email = form.email.value;
         const password = form.password.value;
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(() => {
                 console.log("Informações adicionais salvas no <link>Firestore</link>");
-                window.location.href = "https://lukas-lkc.github.io/hrtool/";
+                window.location.href = "../index.html";
             })
             .catch((error) => {
                 console.error(getErrorMessage(error));
@@ -114,26 +114,26 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = form.email.value;
         if (email && isEmailValid()) {
             form.emailRequiredError.style.display = "none";
-          } else if(email && !isEmailValid()){
+        } else if (email && !isEmailValid()) {
             mudarMensagemErro('email-required-error', "Digite um endereço de email válido");
             form.emailRequiredError.style.display = "block";
-          }else{
+        } else {
             mudarMensagemErro('email-required-error', "Email é obrigatório");
             form.emailRequiredError.style.display = "block";
-          }
+        }
     }
     function togglePasswordErrors() {
         const password = form.password.value;
         form.passwordRequiredError.style.display = password ? "none" : "block";
         if (password && isPasswordValid()) {
             form.passwordRequiredError.style.display = "none";
-          } else if(password && !isPasswordValid()){
+        } else if (password && !isPasswordValid()) {
             mudarMensagemErro('password-required-error', "No mínimo 7 caracteres");
             form.passwordRequiredError.style.display = "block";
-          }else{
+        } else {
             mudarMensagemErro('password-required-error', "Senha é obrigatória");
             form.passwordRequiredError.style.display = "block";
-          }
+        }
     }
 
     function mudarMensagemErro(idElemento, novaMensagem) {
@@ -145,8 +145,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Verifica se os campos são válidos
-    
-    
+
+
 
     function isEmailValid() {
         const email = form.email.value;
@@ -180,4 +180,15 @@ document.addEventListener("DOMContentLoaded", function () {
             icon.classList.remove('hider')
         }
     });
+
+    const linksLogin = document.querySelectorAll(".login");
+
+    linksLogin.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            console.log('deveria');
+            window.location.href = '../login/login.html';
+        });
+    });
+
 });

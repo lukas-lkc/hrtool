@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--limita o usuário ao viewport, não deixa dar zoom-->
+    <title>Recuperar Senha</title>
+    <link rel="stylesheet" href="./styles/pswsent.css" /><!--local-->
+
+    <!--github--><!--
+    <link href="https://raw.githubusercontent.com/lukas-lkc/loginHrTool/main/styles.css" rel="stylesheet" />
+    <script src="https://raw.githubusercontent.com/lukas-lkc/loginHrTool/main/script.js"></script>
+-->
+</head>
+<body>
+    <div class="container">
+        <form>
+            <div class="arrow-container">
+                <div id="arrowL"></div>
+                <span>Voltar</span>
+            </div>
+            <div class="recovery">
+                <h3 class="password-recovery-title">Verifique seu email!</h3>
+                <p class="password-recovery-text">Em breve, você receberá um e-mail com as instruções para redefinir sua senha. Por favor, não demore pois sua redefinição de senha pode expirar.</p>
+            </div>
+            <div>
+                <button type="button" class="button" id="recover-password-button">Ir para o login</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBDykdiCuuMJksQvJ4y2tGkKKdIX3PprBw",
+            authDomain: "hrtool-c763b.firebaseapp.com",
+            databaseURL: "https://hrtool-c763b-default-rtdb.firebaseio.com",
+            projectId: "hrtool-c763b",
+            storageBucket: "hrtool-c763b.appspot.com",
+            messagingSenderId: "443882727101",
+            appId: "1:443882727101:web:54dd9ddd98ae6067d4f9d4",
+            measurementId: "G-PGJTJVYZYN"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="./scripts/pswsent.js"></script><!--local-->
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--limita o usuário ao viewport, não deixa dar zoom-->
+    <title>RH TempoCerto</title>
+    <link rel="stylesheet" href="./css/login.css" /><!--local-->
+
+    <!--github--><!--
+    <link href="https://raw.githubusercontent.com/lukas-lkc/loginHrTool/main/styles.css" rel="stylesheet" />
+    <script src="https://raw.githubusercontent.com/lukas-lkc/loginHrTool/main/script.js"></script>
+-->
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="./img/logo.png" alt="logo" class="logoImg">
+            <span>Por favor digite suas informações de login</span>
+        </header>
+        <div role="alert" id="toast-error" class="invalideAcess" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                <p class="mb-0">Usuário ou senha inválidos. </p>
+            </div>
+        </div>
+        <form>
+            <div class="inputContainer">
+                <div><label>Email</label></div>
+                <input type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()" />
+                <div class="error" id="email-required-error">Email é obrigatório</div>
+            </div>
+            <div class="inputContainer">
+                <div><label>Senha</label></div>
+                <div class="password-container">
+                    <input type="password" name="password" id="password" placeholder="Sua senha"
+                        onchange="onChangePassword()" />
+                    <div id="icon" onclick="showHider()"></div>
+                </div>
+            </div>
+            <div class="error" id="password-required-error">Senha é obrigatória</div>
+            <div class="clear"> <!-- Movendo a classe "clear" para a div pai -->
+                <a id="recover-password-button" href="#" onclick="recoverPasswordClick()">Esqueci minha senha</a>
+            </div>
+            <div>
+                <button type="button" class="button" id="login-button" disabled="true" onclick="login()">Entrar</button>
+            </div>
+            <div class="footer">
+                <p>Não tem uma conta?</p>
+                <a class="outline registro">Clique aqui</a>
+            </div>
+        </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBDykdiCuuMJksQvJ4y2tGkKKdIX3PprBw",
+            authDomain: "hrtool-c763b.firebaseapp.com",
+            databaseURL: "https://hrtool-c763b-default-rtdb.firebaseio.com",
+            projectId: "hrtool-c763b",
+            storageBucket: "hrtool-c763b.appspot.com",
+            messagingSenderId: "443882727101",
+            appId: "1:443882727101:web:54dd9ddd98ae6067d4f9d4",
+            measurementId: "G-PGJTJVYZYN"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="./scripts/login.js"></script><!--local-->
+</body>
+
+</html>

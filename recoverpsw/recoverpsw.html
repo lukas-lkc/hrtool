@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!--limita o usuário ao viewport, não deixa dar zoom-->
+    <title>RH TempoCerto</title>
+    <link rel="stylesheet" href="./styles/recoverpsw.css" /><!--local-->
+
+    <!--github--><!--
+    <link href="https://raw.githubusercontent.com/lukas-lkc/loginHrTool/main/styles.css" rel="stylesheet" />
+    <script src="https://raw.githubusercontent.com/lukas-lkc/loginHrTool/main/script.js"></script>
+-->
+</head>
+<body>
+    <div class="container">
+        <div class="arrow-container" onclick="arrowBack()">
+            <div id="arrowL"></div>
+            <span>Voltar</span>
+        </div>
+        <div role="alert" id="toast-error" class="invalideAcess" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body">
+                <p class="mb-0">Email inválido</p>
+            </div>
+        </div>
+        <form>
+            <div class="recovery">
+                <h3 class="password-recovery-title">Esqueceu sua senha?</h3>
+                <p class="password-recovery-text">Preencha abaixo seu endereço de email para receber as instruções necessárias e criar uma nova senha.</p>
+            </div>
+            <div class="inputContainer">
+                <div><label>Email</label></div>
+                <input type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()" />
+                <div class="error" id="email-required-error">Email é obrigatório</div>
+            </div>
+            <div>
+                <button type="button" class="button" id="recover-password-button">Recuperar Senha</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBDykdiCuuMJksQvJ4y2tGkKKdIX3PprBw",
+            authDomain: "hrtool-c763b.firebaseapp.com",
+            databaseURL: "https://hrtool-c763b-default-rtdb.firebaseio.com",
+            projectId: "hrtool-c763b",
+            storageBucket: "hrtool-c763b.appspot.com",
+            messagingSenderId: "443882727101",
+            appId: "1:443882727101:web:54dd9ddd98ae6067d4f9d4",
+            measurementId: "G-PGJTJVYZYN"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="./scripts/recoverpsw.js"></script><!--local-->
+</body>
+
+</html>

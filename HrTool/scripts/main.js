@@ -1,6 +1,7 @@
 //espera que o DOM seja carregado
 import { getFirestore, collection, addDoc, query, where, getDocs, deleteDoc, doc, getDoc, updateDoc, writeBatch } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
-import { app } from "./firebaseConfig.js"; // Importa o objeto 'app' do firebaseConfig.js
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+import { app, auth } from "./firebaseConfig.js";
 document.addEventListener('DOMContentLoaded', function () {
     //firebase
     const db = getFirestore(app);
@@ -14,6 +15,34 @@ document.addEventListener('DOMContentLoaded', function () {
     var closeBtn = document.getElementById('closeSidebar');
     var closeWindow = document.getElementById('container');
 
+    ///////// #1 Verificar autenticação do user
+    onAuthStateChanged(auth, function (user) {
+        if (user) {
+            //O usuário está autenticado
+            console.log('Logado com email:', user.email);
+        } else {
+            //O usuário não está autenticado
+            console.log('Deslogado');
+            window.location.href = './login/login.html';
+        }
+    });
+
+    //////// #2 sair////////
+    // Adicione um ouvinte de evento de clique ao link "Sair"
+    const sairLink = document.querySelector(".sair");
+    sairLink.addEventListener('click', function (event) {
+        event.preventDefault(); // Evite o comportamento padrão do link
+
+        // Faça logout do usuário
+        signOut(auth).then(() => {
+            console.log('Usuário deslogado com sucesso.');
+            //cai na verificação de autenticação #1
+        }).catch((error) => {
+            console.error('Erro ao deslogar:', error);
+        });
+    });
+    ///////////////////
+    /////#3 side-bar//////
     btn.addEventListener('click', function () {
         showSidebar = !showSidebar;
         if (showSidebar) {
@@ -47,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
 
-    //////////////////////slider
+    //////////#4 slider/////////
     //slider 1
     const slider = document.querySelectorAll('.slide_escala');
     const btnPrev = document.getElementById('prev_btn');
@@ -87,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btnNext.addEventListener('click', nextSlider);
     btnPrev.addEventListener('click', prevSlider);
     //////////////////////
-    /////salvar dados/////
+    /////#5 salvar dados/////
     // Declaração da variável para armazenar o ID do funcionário
     let funcionarioId;
 
@@ -119,48 +148,67 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+
     async function salvarNome() {
         const nomeFunc = document.getElementById("nomeFuncionario").value;
         const sobrenomeFunc = document.getElementById("sobrenomeFuncionario").value;
         const hrEscala = hoursMap[currentSlide];
+
         if (nomeFunc.trim() !== "" && sobrenomeFunc.trim() !== "" && diasAtivos.length > 0) {
             const funcionarioJaExiste = await verificarFuncionarioExistente(nomeFunc, sobrenomeFunc);
+
             if (!funcionarioJaExiste) {
-                const funcionarioRef = await addDoc(collection(db, "funcionarios"), {
-                    nome: nomeFunc,
-                    sobrenome: sobrenomeFunc,
-                    escala: hrEscala
-                });
-                funcionarioId = funcionarioRef.id;
+                // Obtém o ID do usuário autenticado
+                const user = auth.currentUser;
+                const userId = user ? user.uid : null;
 
-                // Itera sobre todos os dias ativos
-                const promises = diasAtivos.map(async (diaAtivo) => {
-                    // Obtém os valores dos campos de entrada e saída para o dia ativo
-                    const hrEntrada = document.getElementById(`entrada${diaAtivo}`);
-                    const hrSaida = document.getElementById(`saida${diaAtivo}`);
+                if (userId) {
+                    // Adiciona o funcionário à coleção "funcionarios"
+                    const funcionarioRef = await addDoc(collection(db, "funcionarios"), {
+                        nome: nomeFunc,
+                        sobrenome: sobrenomeFunc,
+                        escala: hrEscala,
+                    });
 
-                    if (hrEntrada && hrSaida) {
-                        const hrEntradaValue = hrEntrada.value;
-                        const hrSaidaValue = hrSaida.value;
+                    funcionarioId = funcionarioRef.id;
 
-                        if (hrEntradaValue.trim() !== "" && hrSaidaValue.trim() !== "") {
-                            return salvarHorarios(funcionarioId, diaAtivo, hrEntradaValue, hrSaidaValue);
+                    // Cria um documento na coleção "tasks" para associar o usuário ao funcionário
+                    await addDoc(collection(db, "tasks"), {
+                        userId: userId,
+                        funcionarioId: funcionarioId,
+                    });
+
+                    // Itera sobre todos os dias ativos
+                    const promises = diasAtivos.map(async (diaAtivo) => {
+                        // Obtém os valores dos campos de entrada e saída para o dia ativo
+                        const hrEntrada = document.getElementById(`entrada${diaAtivo}`);
+                        const hrSaida = document.getElementById(`saida${diaAtivo}`);
+
+                        if (hrEntrada && hrSaida) {
+                            const hrEntradaValue = hrEntrada.value;
+                            const hrSaidaValue = hrSaida.value;
+
+                            if (hrEntradaValue.trim() !== "" && hrSaidaValue.trim() !== "") {
+                                return salvarHorarios(funcionarioId, diaAtivo, hrEntradaValue, hrSaidaValue);
+                            } else {
+                                return Promise.reject(`Os campos de entrada/saída são obrigatórios para o dia ${diaAtivo}.`);
+                            }
                         } else {
-                            return Promise.reject(`Os campos de entrada/saída são obrigatórios para o dia ${diaAtivo}.`);
+                            return Promise.reject(`Campos de entrada/saída não encontrados para o dia ${diaAtivo}.`);
                         }
-                    } else {
-                        return Promise.reject(`Campos de entrada/saída não encontrados para o dia ${diaAtivo}.`);
-                    }
-                });
+                    });
 
-                if (promises.length > 0) {
-                    try {
-                        await Promise.all(promises);
-                        alert("Clique em Recarregar! :)"); // Exibir alerta após todas as promessas serem cumpridas
-                    } catch (error) {
-                        console.error("Erro ao salvar horários:", error);
-                        // Trate o erro conforme necessário
+                    if (promises.length > 0) {
+                        try {
+                            await Promise.all(promises);
+                            alert("Clique em Recarregar! :)"); // Exibir alerta após todas as promessas serem cumpridas
+                        } catch (error) {
+                            console.error("Erro ao salvar horários:", error);
+                            // Trate o erro conforme necessário
+                        }
                     }
+                } else {
+                    console.error("Usuário não autenticado.");
                 }
             } else {
                 alert("Este funcionário já foi cadastrado antes.");
@@ -178,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     /////////////////////////
-    ////disa semana/////
+    ////#6 disa semana/////
 
     function toggleClass(element) {
         element.classList.toggle("active");
@@ -220,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     ///////////////////////////
-    ////calcular hora extra////
+    ////#7 calcular hora extra////
     //////////////////////////
     function calcularHorasTotais(horarios, escala) {
         let horasTotais = 0;
@@ -269,13 +317,27 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
+    /////////////////////////
+    ///#8 Função para obter todos os IDs dos funcionários associados ao usuário logado
+    async function obterTodosIdsFuncionariosDoUsuarioLogado(userId) {
+        const idsFuncionarios = [];
 
-    // Função para obter o ID do funcionário com base no nome e sobrenome
-    const detalhesFuncionariosDiv = document.getElementById("detalhesFuncionarios");
-    //const detalhesFuncionariosDiv = document.getElementById("infoFuncionarios");
-    registrarBtn3.addEventListener("click", async function () {
+        const tasksRef = collection(db, "tasks");
+        const queryTasks = query(tasksRef, where("userId", "==", userId));
+
+        const querySnapshot = await getDocs(queryTasks);
+
+        querySnapshot.forEach((doc) => {
+            idsFuncionarios.push(doc.data().funcionarioId);
+        });
+
+        return idsFuncionarios;
+    }
+
+    // Função para carregar detalhes dos funcionários associados ao usuário logado
+    async function carregarDetalhesFuncionariosDoUsuarioLogado(userId, detalhesFuncionariosDiv) {
         try {
-            const idsFuncionarios = await obterTodosIdsFuncionarios();
+            const idsFuncionarios = await obterTodosIdsFuncionariosDoUsuarioLogado(userId);
 
             // Limpar o conteúdo existente
             detalhesFuncionariosDiv.innerHTML = "";
@@ -312,6 +374,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log("Excluir funcionário com ID:", detalhes.id);
                     await excluirFuncionario(funcionarioId);
                 });
+
                 // Adicionar os parágrafos e o link à div
                 divInfoFuncionarios.appendChild(pNome);
                 divInfoFuncionarios.appendChild(pEscala);
@@ -325,9 +388,27 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (error) {
             console.error('Erro ao carregar detalhes dos funcionários: ', error);
         }
+    }
+
+    const detalhesFuncionariosDiv = document.getElementById("detalhesFuncionarios");
+    registrarBtn3.addEventListener("click", async function () {
+        try {
+            const user = auth.currentUser;
+            const userId = user ? user.uid : null;
+
+            if (userId) {
+                await carregarDetalhesFuncionariosDoUsuarioLogado(userId, detalhesFuncionariosDiv);
+            } else {
+                console.error("Usuário não autenticado.");
+            }
+        } catch (error) {
+            console.error('Erro ao carregar detalhes dos funcionários: ', error);
+        }
     });
 
-    // Função para excluir um funcionário do Firestore
+
+    ////////////////////////////////////
+    // #8 Função para excluir um funcionário do Firestore
     async function deleteCollection(collectionRef) {
         const snapshot = await getDocs(collectionRef);
 
@@ -349,6 +430,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function excluirFuncionario(funcionarioId) {
         try {
+            // Consultar a coleção "tasks" para encontrar a tarefa associada ao usuário e ao funcionário
+            const tasksQuery = query(collection(db, 'tasks'), where('funcionarioId', '==', funcionarioId));
+            const tasksSnapshot = await getDocs(tasksQuery);
+
+            // Excluir a tarefa se ela existir
+            if (!tasksSnapshot.empty) {
+                const taskId = tasksSnapshot.docs[0].id;
+                const taskDocRef = doc(db, 'tasks', taskId);
+                await deleteDoc(taskDocRef);
+            }
+
             // Referência para a coleção horarios do funcionário
             const funcionarioHorariosRef = collection(db, `funcionarios/${funcionarioId}/horarios`);
             // Excluir horarios do funcionário
@@ -364,11 +456,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Erro ao excluir a subcoleção "horarios" do funcionário:', error);
         }
     }
-
-
-    // Excluir as subcoleções aninhadas
-    //Quando existe, o funcionario não é excluído totalmente
-    //motivo da issue #14 no GitHub
     /////////////////////////////
     ////////////////////////////
     async function obterTodosIdsFuncionarios() {
