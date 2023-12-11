@@ -194,7 +194,7 @@ button[disabled] {
   opacity: 0.5;
   right: 10px;
   /* ou ajuste conforme necessário */
-  background: url('/img/eyeSps.png');
+  background: url('../img/eyeSps.png');
   background-size: cover;
   width: 25px;
   height: 25px;
@@ -202,7 +202,7 @@ button[disabled] {
 }
 
 #icon.hider {
-  background: url('/img/eyeHps.png');
+  background: url('../img/eyeHps.png');
   background-size: cover;
 }
 

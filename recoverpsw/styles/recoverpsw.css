@@ -100,7 +100,7 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
 }
 
 #arrowL {
-  background: url('/img/arrowL.png');
+  background: url('../img/arrowL.png');
   background-size: cover;
   opacity: 50%;
   width: 20px;
