@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const recoverPasswordButton = document.getElementById("recover-password-button");
     const form = {
         email: () => document.getElementById("email"),
@@ -109,18 +108,23 @@ document.addEventListener('DOMContentLoaded', function () {
     form.email().addEventListener("change", onChangeEmail);
 
     /*senha*/
-    const password = document.getElementById("password");
     const icon = document.getElementById("icon");
+    if (icon) {
+        icon.addEventListener('click', showHider);
+    }
     function showHider() {
+        const password = document.getElementById("password");
+        const icon = document.getElementById("icon");
+    
         if (password.type === "password") {
             password.setAttribute('type', 'text');
-            icon.classList.add('hider')
+            icon.classList.add('hider');
         } else {
             password.setAttribute('type', 'password');
-            icon.classList.remove('hider')
+            icon.classList.remove('hider');
         }
     }
-
+    /*não lembro o que é*/
     const sairLink = document.querySelector(".registro");
     if (sairLink) {
         sairLink.addEventListener('click', function (event) {

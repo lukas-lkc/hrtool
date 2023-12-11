@@ -1,0 +1,148 @@
+:root {
+  --color-white: #fff;
+  --color-dark1: #272727;
+  --color-dark2: #2d2d2d;
+  --color-dark3: #414141;
+  --color-dark4: #1c1c1c;
+  --color-dark5: #343434;
+  --color-green1: #2797c2;
+  --color-green2: #1e7fa7;
+  ;
+}
+
+/* Smartphone */
+@media (max-width: 640px) {
+  .header_bar {
+    width: 94%;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+  }
+
+  /**nav header**/
+  .nav_header {
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    background-color: var(--color-dark5);
+    height: 100%;
+    width: 35vw;
+    padding: 1em;
+    animation-duration: 1s;
+    margin-left: -100vw;
+    z-index: 2;
+  }
+
+  @keyframes showSidebar {
+    from {
+      margin-left: -100vw;
+    }
+
+    top {
+      margin-left: -10vw;
+    }
+  }
+
+  .btn_icon_header {
+    display: block;
+    margin: 30px;
+  }
+
+  .btn {
+    margin-bottom: 40px;
+  }
+
+  /****/
+  .container {
+    width: 90vw;
+    height: 80vh;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .container .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .container .header span {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-right: 10px;
+  }
+
+  .container .header .logoImg {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    margin-right: 30px;
+  }
+
+  .container form {
+    width: 90vw;
+  }
+
+  .container form .inputContainer label {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 8px;
+  }
+
+  .container form .inputContainer input {
+    width: 79vw;
+    height: 30px;
+  }
+
+  .container form .clear a {
+    margin-left: 22vh;
+  }
+
+  .container form .button {
+    width: 90vw;
+    height: 48px;
+  }
+
+  footer {
+    margin-top: 30px;
+    width: 89%;
+    background-color: #008380;
+    text-align: center;
+    padding: 20px;
+  }
+}
+
+/* Smartwatch*/
+@media (max-width: 260px) {
+  header {
+    padding: 5px;
+    text-align: center;
+    border-bottom: 2px solid #0f642f;
+  }
+
+  header h1 {
+    font-size: 5px;
+  }
+
+  .nav_header {
+    height: 300px;
+    width: 60vw;
+  }
+
+  .btn {
+    margin-bottom: 20px;
+    padding: 7px 0px 5px 0px;
+  }
+
+  .container {
+    padding: 0px;
+  }
+
+  footer {
+    margin-top: 30px;
+    width: 80%;
+    background-color: #008380;
+    text-align: center;
+    padding: 20px;
+  }
+}

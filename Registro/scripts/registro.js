@@ -170,18 +170,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /*senha*/
     const icon = document.getElementById("icon");
-    const password = document.getElementById("password");
-    icon.addEventListener("click", function () {
+    if (icon) {
+        icon.addEventListener('click', showHider);
+    }
+    function showHider() {
+        const password = document.getElementById("password");
+        const icon = document.getElementById("icon");
+    
         if (password.type === "password") {
             password.setAttribute('type', 'text');
-            icon.classList.add('hider')
+            icon.classList.add('hider');
         } else {
             password.setAttribute('type', 'password');
-            icon.classList.remove('hider')
+            icon.classList.remove('hider');
         }
-    });
-
-    const linksLogin = document.querySelectorAll(".login");
+    }
 
     linksLogin.forEach(function (link) {
         link.addEventListener('click', function (event) {

@@ -5,20 +5,48 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <!--limita o usuário ao viewport, não deixa dar zoom-->
     <title>RH TempoCerto</title>
-    <link rel="stylesheet" href="./css/login.css" /><!--local-->
 
-    <!--github--><!--
-    <link href="https://raw.githubusercontent.com/lukas-lkc/loginHrTool/main/styles.css" rel="stylesheet" />
-    <script src="https://raw.githubusercontent.com/lukas-lkc/loginHrTool/main/script.js"></script>
--->
+    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="../HeaderBar/styles/headerBar.css" />
+    <link rel="stylesheet" href="../Responsividade/resphone.css" />
+    <script src="../HeaderBar/scripts/headerBar.js"></script>
+    <script src="./scripts/login.js"></script>
+
 </head>
 
 <body>
-    <div class="container">
+    <header tabindex="0" class="header_bar" id="header_bar">
+        <button class="btn_icon_header" id="showSidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg>
+        </button>
+        <h1>Hr Tool</h1>
+        <!--caso queira por imagem
+          <div class="logo_header">
+            <img src="link" class="img_logo" alt"legenda">
+          </div>
+          -->
+        <nav class="nav_header" id="nav_header">
+            <button class="btn_icon_header" id="closeSidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                </svg>
+            </button>
+            <a href="#" class="active login">Entrar</a>
+            <a href="#">Sobre mim</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+    <!-- main -->
+    <div tabindex="0" class="container" id="container">
         <header class="header">
-            <img src="./img/logo.png" alt="logo" class="logoImg">
+            <img src="/img/logo.png" alt="logo" class="logoImg">
             <span>Por favor digite suas informações de login</span>
         </header>
         <div role="alert" id="toast-error" class="invalideAcess" aria-live="assertive" aria-atomic="true">
@@ -37,7 +65,7 @@
                 <div class="password-container">
                     <input type="password" name="password" id="password" placeholder="Sua senha"
                         onchange="onChangePassword()" />
-                    <div id="icon" onclick="showHider()"></div>
+                    <div id="icon"></div>
                 </div>
             </div>
             <div class="error" id="password-required-error">Senha é obrigatória</div>
@@ -68,7 +96,12 @@
         };
         firebase.initializeApp(firebaseConfig);
     </script>
-    <script src="./scripts/login.js"></script><!--local-->
+    <footer>
+        <p>
+            <span class="bold">by Lucas Paixão</span>
+            &copy; 2023
+        </p>
+    </footer>
 </body>
 
 </html>

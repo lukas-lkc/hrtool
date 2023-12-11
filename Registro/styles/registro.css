@@ -7,15 +7,16 @@ body {
 * {
   padding: 0;
   margin: 0;
-  /*cor de todas as fontes que não tiverem atributo de cor própria*/
 }
 
 body {
-  align-items: center;
-  justify-content: center;
   background-color: #d3d3d3;
-  /* Altere a cor de fundo conforme necessário */
   font-family: 'Nunito Sans', sans-serif;
+  width: 100%; /* Defina a largura do corpo como 100% */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
 }
 
 button {
@@ -89,16 +90,7 @@ button[disabled] {
 
 /**/
 .container {
-  background-color: #d3d3d3;
-  min-height: 60vh;
-  padding: 20px;
-  display: grid;
-  place-items: center;
-}
-
-/**/
-
-.container-form {
+  max-width: 100%; /* Ajustado para não ultrapassar a largura da tela */
   height: 500px;
   display: flex;
   align-items: center;
@@ -110,7 +102,9 @@ button[disabled] {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
-.container-form form .clear a {
+/**/
+
+.container form .clear a {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
@@ -120,7 +114,7 @@ button[disabled] {
   color: #008380;
 }
 
-.container-form form .clear a:hover {
+.container form .clear a:hover {
   text-decoration: underline;
   /* Adiciona sublinhado no hover */
 }
@@ -144,57 +138,56 @@ button[disabled] {
   gap: 2em;
 }
 
-.container-form .header {
+.container .header {
   display: flex;
   align-items: center;
-  margin-bottom: 0px;
-  margin-right: auto;
+  margin-bottom: 10px;
 }
 
-.container-form .header span {
+.container .header span {
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
   margin-right: 20px;
 }
 
-.container-form .header .logoImg {
+.container .header .logoImg {
   width: 50px;
   height: 50px;
   background-size: cover;
   margin-right: 20px;
 }
 
-.container-form form {
+.container form {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.container-form form .inputContainer {
+.container form .inputContainer {
   position: relative;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
 
-.container-form form .inputContainer label {
+.container form .inputContainer label {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   margin-bottom: 3px;
 }
 
-.container-form form .inputContainer input {
+.container form .inputContainer input {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 0.6rem 1rem !important;
   width: 418px;
-  height: 20px;
+  height: 30px;
   border-radius: 0.3rem;
   margin-top: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: 1.1rem;
   line-height: 1.3;
   border: 0.7px solid #c9ced4;
@@ -203,7 +196,7 @@ button[disabled] {
   /* Adiciona uma transição suave para a mudança de borda */
 }
 
-.container-form form .inputContainer input:focus {
+.container form .inputContainer input:focus {
   border-color: rgba(0, 131, 128, 0.5);
   /* Bordas com opacidade na metade */
   outline: none;
@@ -214,31 +207,32 @@ button[disabled] {
 
 #icon {
   position: absolute;
-    top: 55%;
-    transform: translateY(-50%);
-    opacity: 50%;
-    right: 10px; /* ou ajuste conforme necessário */
-    background: url('/img/eyeSps.png');
-    background-size: cover;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
+  top: 55%;
+  transform: translateY(-50%);
+  opacity: 50%;
+  right: 10px;
+  /* ou ajuste conforme necessário */
+  background: url('/img/eyeSps.png');
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
 
 #icon.hider {
   background: url('/img/eyeHps.png');
   background-size: cover;
 }
-.container-form form a {
+.container form a {
   font-weight: 400;
-  font-size: 10px;
+  font-size: 16px;
   line-height: 19px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   color: #5C73DB;
 }
 
-.container-form form .button {
+.container form .button {
   width: 450px;
   height: 35px;
   background: #008380;
@@ -254,12 +248,12 @@ button[disabled] {
   gap: 15px;
 }
 
-.container-form form .button:hover {
+.container form .button:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
-.container-form form .footer {
+.container form .footer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,21 +261,21 @@ button[disabled] {
   text-decoration: none;
 }
 
-.container-form form .footer p {
+.container form .footer p {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: #000000;
 }
 
-.container-form form .footer a {
+.container form .footer a {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: #008380;
 }
 
-.container-form form .footer a:hover {
+.container form .footer a:hover {
   text-decoration: underline;
   /* Adiciona sublinhado no hover */
 }
@@ -299,113 +293,4 @@ button[disabled] {
   color: #fff;
   font-size: 15px;
   font-weight: 700
-}
-
-footer {
-  background-color: #008380;
-  text-align: center;
-  padding: 80px;
-  /* Adicione regras de estilo específicas para o rodapé, se necessário */
-}
-
-/* Smartphone */
-@media (max-width: 640px) {
-
-  .container {
-    width: 100%;
-  }
-
-  .container-form {
-    width: 100%;
-    padding: 10px;
-    /* Altere conforme necessário para se adequar ao seu layout */
-  }
-
-  .container-form .header .logoImg {
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-    margin-left: 20px;
-  }
-
-  .container-form form .inputContainer input {
-    width: 200px;
-    /* Ocupar a largura total na tela pequena */
-  }
-
-  #toast-error {
-    margin: 0;
-    /* Ajuste a margem conforme necessário para melhor exibição em dispositivos móveis */
-  }
-
-  .termos {
-    width: 90%;
-    /* Ajuste conforme necessário */
-  }
-
-  .nav_header {
-    position: absolute;
-    flex-direction: column;
-    top: 0;
-    background-color: var(--color-dark5);
-    height: 100%;
-    width: 35vw;
-    padding: 1em;
-    animation-duration: 1s;
-    margin-left: -100vw;
-    z-index: 2;
-  }
-
-  @keyframes showSidebar {
-    from {
-      margin-left: -100vw;
-    }
-
-    top {
-      margin-left: -10vw;
-    }
-  }
-
-  .btn_icon_header {
-    display: block;
-  }
-
-  .btn {
-    margin-bottom: 40px;
-  }
-
-  footer {
-    padding: 40px;
-  }
-}
-
-/* Smartwatch*/
-@media (max-width: 260px) {
-  header {
-    padding: 5px;
-    text-align: center;
-    border-bottom: 2px solid #0f642f;
-  }
-
-  header h1 {
-    font-size: 5px;
-  }
-
-  .nav_header {
-    height: 300px;
-    width: 60vw;
-  }
-
-  .btn {
-    margin-bottom: 20px;
-    padding: 7px 0px 5px 0px;
-  }
-
-  .container {
-    padding: 0px;
-  }
-
-  footer {
-    padding: 20px;
-  }
 }

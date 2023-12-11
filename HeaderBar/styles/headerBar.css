@@ -1,0 +1,64 @@
+.header_bar {
+    background-color: #008380;
+    width: 98%;
+    /* Ajustado para ocupar toda a largura */
+    height: 56px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    /* Ajuste o padding conforme necessário */
+    color: azure;
+    margin-bottom: 30px;
+}
+
+.header_bar h1 {
+    margin: 10px 10px 10px 90px;
+    font-size: 20px;
+    width: 200px;
+}
+
+.nav_header {
+    margin: 10px 90px 10px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3em;
+}
+
+.nav_header a {
+    text-decoration: none;
+    color: white;
+    transition: 1s;
+    font-weight: bold;
+}
+
+.nav_header a:hover {
+    color: #008380;
+    transition: 1s;
+}
+
+/*aqui deve ser feito posteriormente com JS*/
+.active {
+    background-color: #004644;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.btn_icon_header {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+footer {
+    margin-top: 30px;
+    width: 95%;
+    background-color: #008380;
+    text-align: center;
+    padding: 2em;
+    /* Ajuste o padding conforme necessário */
+}

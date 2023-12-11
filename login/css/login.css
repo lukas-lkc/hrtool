@@ -4,13 +4,19 @@ body {
   margin: 0;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #d3d3d3;
-  /* Altere a cor de fundo conforme necessário */
   font-family: 'Nunito Sans', sans-serif;
+  width: 100%; /* Defina a largura do corpo como 100% */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
 }
 
 button {
@@ -87,7 +93,7 @@ button[disabled] {
 /**/
 
 .container {
-  width: 470px;
+  max-width: 100%; /* Ajustado para não ultrapassar a largura da tela */
   height: 500px;
   display: flex;
   align-items: center;
@@ -97,10 +103,6 @@ button[disabled] {
   border-radius: 12px;
   background-color: #f0f0f0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
-  /*0: Deslocamento horizontal da sombra.
-4px: Deslocamento vertical da sombra.
-8px: Desfoque (blur) da sombra.
-rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de opacidade.*/
 }
 
 .container form .clear a {
@@ -189,10 +191,10 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
   position: absolute;
   top: 55%;
   transform: translateY(-50%);
-  opacity: 50%;
+  opacity: 0.5;
   right: 10px;
   /* ou ajuste conforme necessário */
-  background: url('./img/eyeSps.png');
+  background: url('/img/eyeSps.png');
   background-size: cover;
   width: 25px;
   height: 25px;
@@ -200,7 +202,7 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
 }
 
 #icon.hider {
-  background: url('./img/eyeHps.png');
+  background: url('/img/eyeHps.png');
   background-size: cover;
 }
 
@@ -274,89 +276,4 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
   color: #fff;
   font-size: 15px;
   font-weight: 700
-}
-
-/* Smartphone */
-@media (max-width: 640px) {
-  .nav_header {
-    position: absolute;
-    flex-direction: column;
-    top: 0;
-    background-color: var(--color-dark5);
-    height: 100%;
-    width: 35vw;
-    padding: 1em;
-    animation-duration: 1s;
-    margin-left: -100vw;
-    z-index: 2;
-  }
-
-  @keyframes showSidebar {
-    from {
-      margin-left: -100vw;
-    }
-
-    top {
-      margin-left: -10vw;
-    }
-  }
-
-  .btn_icon_header {
-    display: block;
-  }
-
-  .btn {
-    margin-bottom: 40px;
-  }
-
-  .container {
-    width: 90vw;
-    height: 80vh;
-    padding: 10px;
-    margin: 10px;
-  }
-
-  .container .header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .container .header span {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    margin-right: 10px;
-  }
-  
-  .container .header .logoImg {
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-    margin-right: 30px;
-  }
-
-  .container form {
-    width: 90vw;
-  }
-  
-  .container form .inputContainer label {
-    font-size: 16px;
-    line-height: 19px;
-    margin-bottom: 8px;
-  }
-  
-  .container form .inputContainer input {
-    width: 79vw;
-    height: 30px;
-  }
-
-  .container form .clear a {
-    margin-left: 22vh;
-  }
-
-  .container form .button {
-    width: 90vw;
-    height: 48px;
-  }
 }

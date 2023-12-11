@@ -5,13 +5,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <!--limita o usuário ao viewport, não deixa dar zoom-->
   <title>Hr Tool</title>
-  <link rel="stylesheet" href="./styles/registro.css" /><!--local-->
-  <!--<script type="module" src="firebaseConfig.js"></script>local-->
+  <link rel="stylesheet" href="../HeaderBar/styles/headerBar.css" />
+  <link rel="stylesheet" href="./styles/registro.css" />
+  <link rel="stylesheet" href="../Responsividade/resphone.css" />
   <script type="module" src="./scripts/registro.js"></script>
-  <link rel="stylesheet" href="./styles/headerBar.css" /><!--local-->
-  <script src="./scripts/headerBar.js"></script>
+  <script src="../HeaderBar/scripts/headerBar.js"></script>
 
   <!--github--><!--
     <link href="https://raw.githubusercontent.com/lukas-lkc/loginHrTool/main/styles.css" rel="stylesheet" />
@@ -49,57 +48,66 @@
     </nav>
   </header>
   <!-- main -->
-  <main tabindex="0" class="container" id="container">
-    <div class="container-form">
-      <header class="header">
-        <img src="./img/logo.png" alt="logo" class="logoImg">
-        <span>Cadastre-se abaixo</span>
-      </header>
-      <div role="alert" id="toast-error" class="invalideAcess" aria-live="assertive" aria-atomic="true">
-        <div class="toast-body">
-          <p class="mb-0">Usuário duplicado.</p>
+  <div tabindex="0" class="container" id="container">
+    <header class="header">
+      <img src="/img/logo.png" alt="logo" class="logoImg">
+      <span>Cadastre-se abaixo</span>
+    </header>
+    <div role="alert" id="toast-error" class="invalideAcess" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body">
+        <p class="mb-0">Usuário duplicado.</p>
+      </div>
+    </div>
+    <div role="alert" id="toast-error" class="invalideAcess" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body">
+        <p class="mb-0">Usuário ou senha inválidos. </p>
+      </div>
+    </div>
+    <form>
+      <div class="inputContainer">
+        <div><label>Nome</label></div>
+        <input type="text" name="name" id="name" placeholder="Seu nome" />
+        <div class="error" id="name-required-error">Nome é obrigatório</div>
+      </div>
+      <div class="inputContainer">
+        <div><label>Email</label></div>
+        <input type="email" name="email" id="email" placeholder="seu@email.com" />
+        <div class="error" id="email-required-error">Email é obrigatório</div>
+      </div>
+      <div class="inputContainer">
+        <div><label>Senha</label></div>
+        <div class="password-container">
+          <input type="password" name="password" id="password" placeholder="Insira uma senha" />
+          <div class="error" id="password-required-error">Senha é obrigatória </div>
+          <div class="icon-container">
+            <div id="icon"></div>
+          </div>
         </div>
       </div>
-      <form>
-        <div class="inputContainer">
-          <div><label>Nome</label></div>
-          <input type="name" name="name" id="name" placeholder="Seu nome" />
-          <div class="error" id="name-required-error">Nome é obrigatório</div>
+      <div class="error" id="password-required-error">Senha é obrigatória</div>
+      <div>
+        <button type="button" class="button" id="register-button">Cadastre-se agora</button>
+      </div>
+      <div class="footer">
+        <p>Já possui uma conta?</p>
+        <a class="outline login" href="#">Faça login</a>
+      </div>
+      <div class="termos">
+        <p>Ao clicar em "Registra", concordo e que tenho ciência dos Termos de Uso e Política de Privacidade do HR
+          Tool.</p>
+        <div class="links">
+          <a class="outline" href="./termoUso.html">Termo de Uso</a>
+          <a class="outline" href="./privacyPolicy.html">Política de Privacidade</a>
         </div>
-        <div class="inputContainer">
-          <div><label>Email</label></div>
-          <input type="email" name="email" id="email" placeholder="seu@email.com" />
-          <div class="error" id="email-required-error">Email é obrigatório</div>
-        </div>
-        <div class="inputContainer">
-          <div><label>Senha</label></div>
-          <div class="password-container">
-            <input type="password" name="password" id="password" placeholder="Insira uma senha" />
-            <div class="error" id="password-required-error">Senha é obrigatória </div>
-            <div class="icon-container">
-              <div id="icon" onclick="showHider()"></div>
-            </div>
-          </div>
-        </div>
-        <div class="error" id="password-required-error">Senha é obrigatória</div>
-        <div>
-          <button type="button" class="button" id="register-button">Cadastre-se agora</button>
-        </div>
-        <div class="footer">
-          <p>Já possui uma conta?</p>
-          <a class="outline login" href="#">Faça login</a>
-        </div>
-        <div class="termos">
-          <p>Ao clicar em "Registra", concordo e que tenho ciência dos Termos de Uso e Política de Privacidade do HR
-            Tool.</p>
-          <div class="links">
-            <a class="outline" href="./termoUso.html">Termo de Uso</a>
-            <a class="outline" href="./privacyPolicy.html">Política de Privacidade</a>
-          </div>
-        </div>
-      </form>
-    </div>
-  </main>
+      </div>
+    </form>
+  </div>
+  <footer>
+    <p>
+      <span class="bold">by Lucas Paixão</span>
+      &copy; 2023
+    </p>
+  </footer>
 </body>
 
 </html>

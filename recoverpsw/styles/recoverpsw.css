@@ -100,7 +100,7 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
 }
 
 #arrowL {
-  background: url('../img/arrowL.png');
+  background: url('/img/arrowL.png');
   background-size: cover;
   opacity: 50%;
   width: 20px;
@@ -122,11 +122,6 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
   margin-top: 20px;
   margin-bottom: 20px;
   color: #008380;
-}
-
-.container form .recovery p {
-  margin-top: 10px;
-  margin-bottom: 15px;
 }
 
 .container form .recovery p {
@@ -225,4 +220,15 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
   color: #fff;
   font-size: 15px;
   font-weight: 700
+}
+
+@media(max-width: 640px){
+  .arrow-container {
+    margin-left: -250px;
+    margin-bottom: 20px;
+  }
+  
+  .container form .recovery {
+    width: 300px;
+  }
 }

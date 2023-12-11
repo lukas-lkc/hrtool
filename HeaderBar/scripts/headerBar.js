@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     //show and close sidebar
-    var headerBar = document.getElementById('header_bar');
     var navHeader = document.getElementById('nav_header');
     var container = document.getElementById('container');
     var showSidebar = false;
@@ -8,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var closeBtn = document.getElementById('closeSidebar');
     var closeWindow = document.getElementById('container');
 
+    /////#3 side-bar//////
     btn.addEventListener('click', function () {
         showSidebar = !showSidebar;
         if (showSidebar) {
