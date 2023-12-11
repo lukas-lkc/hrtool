@@ -20,25 +20,27 @@
 
   /**nav header**/
   .nav_header {
+    margin: -20px;
     position: absolute;
     flex-direction: column;
     top: 0;
     background-color: var(--color-dark5);
-    height: 100%;
-    width: 35vw;
-    padding: 1em;
+    height: 30%;
+    width: 100%;
+    padding: 50px 10px 0px 10px;
+    gap: 3em;
     animation-duration: 1s;
-    margin-left: -100vw;
+    transform: translateY(-100%);
     z-index: 2;
   }
 
   @keyframes showSidebar {
     from {
-      margin-left: -100vw;
+      transform: translateY(-100%);
     }
 
-    top {
-      margin-left: -10vw;
+    to {
+      transform: translateY(0);
     }
   }
 
@@ -46,7 +48,7 @@
     display: block;
     margin: 30px;
   }
-
+  
   .btn {
     margin-bottom: 40px;
   }
