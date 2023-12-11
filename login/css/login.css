@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -7,7 +8,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d3d3d3; /* Altere a cor de fundo conforme necessário */
+  background-color: #d3d3d3;
+  /* Altere a cor de fundo conforme necessário */
   font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -28,6 +30,7 @@ button[disabled] {
   border: none;
   color: white;
 }
+
 .solid {
   background: white;
   border: none;
@@ -55,14 +58,19 @@ button[disabled] {
   margin-left: 230px;
   margin-bottom: 30px;
   margin-top: 0px;
-  width: 220px; /* Ajuste a largura conforme necessário */
-  height: 40px; /* Defina a altura desejada */
-  background-color: #f44336; /* Cor de fundo do alerta */
-  color: #fff; /* Cor do texto do alerta */
+  width: 220px;
+  /* Ajuste a largura conforme necessário */
+  height: 40px;
+  /* Defina a altura desejada */
+  background-color: #f44336;
+  /* Cor de fundo do alerta */
+  color: #fff;
+  /* Cor do texto do alerta */
   border-radius: 0.3rem;
   padding: 10px 10px 0px 10px;
   box-sizing: border-box;
-  z-index: 1000; /* Certifique-se de que a z-index seja maior do que outros elementos, se necessário */
+  z-index: 1000;
+  /* Certifique-se de que a z-index seja maior do que outros elementos, se necessário */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -99,14 +107,17 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  margin-left: 300px; 
+  margin-left: 300px;
   cursor: pointer;
   text-decoration: none;
   color: #008380;
 }
+
 .container form .clear a:hover {
-  text-decoration: underline; /* Adiciona sublinhado no hover */
+  text-decoration: underline;
+  /* Adiciona sublinhado no hover */
 }
+
 .container .header {
   display: flex;
   align-items: center;
@@ -126,6 +137,7 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
   background-size: cover;
   margin-right: 20px;
 }
+
 .container form {
   display: flex;
   align-items: center;
@@ -150,7 +162,7 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0.6rem 1rem!important;
+  padding: 0.6rem 1rem !important;
   width: 418px;
   height: 30px;
   border-radius: 0.3rem;
@@ -158,33 +170,40 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
   margin-bottom: 10px;
   font-size: 1.1rem;
   line-height: 1.3;
-  border: 0.7px solid #c9ced4; /* Cor padrão da borda */
-  transition: border 0.3s ease-in-out; /* Adiciona uma transição suave para a mudança de borda */
+  border: 0.7px solid #c9ced4;
+  /* Cor padrão da borda */
+  transition: border 0.3s ease-in-out;
+  /* Adiciona uma transição suave para a mudança de borda */
 }
 
 .container form .inputContainer input:focus {
-  border-color: rgba(0, 131, 128, 0.5); /* Bordas com opacidade na metade */
-  outline: none; /* Remove a borda padrão do navegador */
-  box-shadow: 0 0 5px rgba(0, 131, 128, 0.5); /* Adiciona uma sombra suave quando focado */
+  border-color: rgba(0, 131, 128, 0.5);
+  /* Bordas com opacidade na metade */
+  outline: none;
+  /* Remove a borda padrão do navegador */
+  box-shadow: 0 0 5px rgba(0, 131, 128, 0.5);
+  /* Adiciona uma sombra suave quando focado */
 }
 
 #icon {
   position: absolute;
-    top: 55%;
-    transform: translateY(-50%);
-    opacity: 50%;
-    right: 10px; /* ou ajuste conforme necessário */
-    background: url('./img/eyeSps.png');
-    background-size: cover;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
+  top: 55%;
+  transform: translateY(-50%);
+  opacity: 50%;
+  right: 10px;
+  /* ou ajuste conforme necessário */
+  background: url('./img/eyeSps.png');
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
 
 #icon.hider {
   background: url('./img/eyeHps.png');
   background-size: cover;
 }
+
 .container form a {
   font-weight: 400;
   font-size: 16px;
@@ -238,7 +257,8 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
 }
 
 .container form .footer a:hover {
-  text-decoration: underline; /* Adiciona sublinhado no hover */
+  text-decoration: underline;
+  /* Adiciona sublinhado no hover */
 }
 
 /*invalid email/senha*/
@@ -254,4 +274,89 @@ rgba(0, 0, 0, 0.1): Cor da sombra. Neste caso, é uma sombra preta com 10% de op
   color: #fff;
   font-size: 15px;
   font-weight: 700
+}
+
+/* Smartphone */
+@media (max-width: 640px) {
+  .nav_header {
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    background-color: var(--color-dark5);
+    height: 100%;
+    width: 35vw;
+    padding: 1em;
+    animation-duration: 1s;
+    margin-left: -100vw;
+    z-index: 2;
+  }
+
+  @keyframes showSidebar {
+    from {
+      margin-left: -100vw;
+    }
+
+    top {
+      margin-left: -10vw;
+    }
+  }
+
+  .btn_icon_header {
+    display: block;
+  }
+
+  .btn {
+    margin-bottom: 40px;
+  }
+
+  .container {
+    width: 90vw;
+    height: 80vh;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .container .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .container .header span {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-right: 10px;
+  }
+  
+  .container .header .logoImg {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    margin-right: 30px;
+  }
+
+  .container form {
+    width: 90vw;
+  }
+  
+  .container form .inputContainer label {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 8px;
+  }
+  
+  .container form .inputContainer input {
+    width: 79vw;
+    height: 30px;
+  }
+
+  .container form .clear a {
+    margin-left: 22vh;
+  }
+
+  .container form .button {
+    width: 90vw;
+    height: 48px;
+  }
 }
