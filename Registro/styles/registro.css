@@ -120,8 +120,9 @@ button[disabled] {
 }
 
 .termos {
-  text-align: left;
+  text-align: center;
   width: 450px;
+  opacity: 70%;
 }
 
 .termos a:hover {
@@ -212,7 +213,7 @@ button[disabled] {
   opacity: 50%;
   right: 10px;
   /* ou ajuste conforme necessário */
-  background: url('../img/eyeSps.png');
+  background: url('/hrtool/img/eyeSps.png');
   background-size: cover;
   width: 25px;
   height: 25px;
@@ -220,7 +221,7 @@ button[disabled] {
 }
 
 #icon.hider {
-  background: url('../img/eyeHps.png');
+  background: url('/hrtool/img/eyeHps.png');
   background-size: cover;
 }
 .container form a {

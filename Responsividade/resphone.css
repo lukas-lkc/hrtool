@@ -105,6 +105,12 @@
     height: 48px;
   }
 
+  .termos {
+    text-align: left;
+    width: 300px;
+    opacity: 80%;
+  }
+
   footer {
     margin-top: 30px;
     width: 89%;
