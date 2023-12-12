@@ -1,14 +1,12 @@
 .header_bar {
     background-color: #008380;
     width: 98%;
-    /* Ajustado para ocupar toda a largura */
-    height: 56px;
+    height: 75px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    /* Ajuste o padding conforme necessário */
     color: azure;
     margin-bottom: 30px;
 }
@@ -37,9 +35,11 @@
 .nav_header a:hover {
     color: #008380;
     transition: 1s;
+    background-color: #004644;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-/*aqui deve ser feito posteriormente com JS*/
 .active {
     background-color: #004644;
     padding: 10px;

@@ -62,7 +62,7 @@ button[disabled] {
 #toast-error {
   display: none;
   text-align: center;
-  margin: 0px 0px 0px 230px;
+  margin: 0px -20px 0px 230px;
   width: 200px;
   /* Ajuste a largura conforme necessário */
   height: 40px;

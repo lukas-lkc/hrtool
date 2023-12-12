@@ -54,6 +54,9 @@
   }
 
   /****/
+  #toast-error {
+    margin-left: 98px;
+  }
   .container {
     width: 90vw;
     height: 80vh;
