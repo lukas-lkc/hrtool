@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="../HeaderBar/styles/headerBar.css" />
     <link rel="stylesheet" href="../Responsividade/resphone.css" />
     <script src="../HeaderBar/scripts/headerBar.js"></script>
-    <script src="./scripts/login.js"></script>
 
+    <script type="module" src="./scripts/login.js"></script>
+    
 </head>
 
 <body>
@@ -50,23 +51,22 @@
         <form>
             <div class="inputContainer">
                 <div><label>Email</label></div>
-                <input type="email" name="email" id="email" placeholder="seu@email.com" onchange="onChangeEmail()" />
+                <input type="email" name="email" id="email" placeholder="seu@email.com" />
                 <div class="error" id="email-required-error">Email é obrigatório</div>
             </div>
             <div class="inputContainer">
                 <div><label>Senha</label></div>
                 <div class="password-container">
-                    <input type="password" name="password" id="password" placeholder="Sua senha"
-                        onchange="onChangePassword()" />
+                    <input type="password" name="password" id="password" placeholder="Sua senha" />
                     <div id="icon"></div>
                 </div>
             </div>
             <div class="error" id="password-required-error">Senha é obrigatória</div>
-            <div class="clear"> <!-- Movendo a classe "clear" para a div pai -->
-                <a id="recover-password-button" href="#" onclick="recoverPasswordClick()">Esqueci minha senha</a>
+            <div class="clear">
+                <a id="recover-password-button" href="#">Esqueci minha senha</a>
             </div>
             <div>
-                <button type="button" class="button" id="login-button" disabled="true" onclick="login()">Entrar</button>
+                <button type="button" class="button" id="login-button">Entrar</button>
             </div>
             <div class="footer">
                 <p>Não tem uma conta?</p>
@@ -74,21 +74,6 @@
             </div>
         </form>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth-compat.js"></script>
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyBDykdiCuuMJksQvJ4y2tGkKKdIX3PprBw",
-            authDomain: "hrtool-c763b.firebaseapp.com",
-            databaseURL: "https://hrtool-c763b-default-rtdb.firebaseio.com",
-            projectId: "hrtool-c763b",
-            storageBucket: "hrtool-c763b.appspot.com",
-            messagingSenderId: "443882727101",
-            appId: "1:443882727101:web:54dd9ddd98ae6067d4f9d4",
-            measurementId: "G-PGJTJVYZYN"
-        };
-        firebase.initializeApp(firebaseConfig);
-    </script>
     <footer>
         <p>
             <span class="bold">by Lucas Paixão</span>

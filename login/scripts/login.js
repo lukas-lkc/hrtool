@@ -1,6 +1,53 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js';
+import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
+
+const firebaseApp = initializeApp({
+    apiKey: "AIzaSyBDykdiCuuMJksQvJ4y2tGkKKdIX3PprBw",
+    authDomain: "hrtool-c763b.firebaseapp.com",
+    databaseURL: "https://hrtool-c763b-default-rtdb.firebaseio.com",
+    projectId: "hrtool-c763b",
+    storageBucket: "hrtool-c763b.appspot.com",
+    messagingSenderId: "443882727101",
+    appId: "1:443882727101:web:54dd9ddd98ae6067d4f9d4",
+    measurementId: "G-PGJTJVYZYN"
+});
+
+const auth = getAuth(firebaseApp);
+
+auth.onAuthStateChanged(user => {
+    console.log("Estado de Autenticação:", user);
+});
+
+let form;
+
+function recoverPasswordClick() {
+    window.location.href = "../recoverpsw/recoverpsw.html";
+}
+
+function login() {
+    console.log("Início da função login()");
+    console.log("Tentativa de login...");
+
+    // Obtenha os valores de e-mail e senha
+    const email = form.email().value;
+    const password = form.password().value;
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then(response => {
+            console.log("Login bem-sucedido:", response);
+            window.location.href = "../index.html";
+        })
+        .catch(error => {
+            console.error("Erro durante o login:", error);
+            const toastError = document.getElementById("toast-error");
+            toastError.style.display = "block";
+        });
+
+    console.log("Fim da função login()");
+}
+
 document.addEventListener('DOMContentLoaded', function () {
-    const recoverPasswordButton = document.getElementById("recover-password-button");
-    const form = {
+    form = {
         email: () => document.getElementById("email"),
         emailRequiredError: () => document.getElementById("email-required-error"),
         loginButton: () => document.getElementById("login-button"),
@@ -9,128 +56,47 @@ document.addEventListener('DOMContentLoaded', function () {
         recoverPasswordButton: () => document.getElementById("recover-password-button"),
     };
 
+    const recoverPasswordButton = document.getElementById("recover-password-button");
+
     if (recoverPasswordButton) {
         recoverPasswordButton.addEventListener("click", function (event) {
-            event.preventDefault(); // Evita que o link execute o comportamento padrão de recarregar a página
-            recoverPasswordClick(); // Chama a função que verifica a validade do e-mail
+            event.preventDefault();
+            recoverPasswordClick();
         });
     }
 
-    function recoverPasswordClick() {
-        //window.location.href = "https://lukas-lkc.github.io/recoverPassHrTool/";
-        window.location.href = "../recoverpsw/recoverpsw.html";
-    }
-
-    function onChangeEmail() {
-        toggleButtonsDisable();
-        toggleEmailErrors();
-    }
-    function onChangePassword() {
-        toggleButtonsDisable();
-        togglePasswordErrors();
-    }
-    function login() {
-        firebase.auth().signInWithEmailAndPassword(form.email().value, form.password().value
-        ).then(response => {
-            //window.location.href = "https://lukas-lkc.github.io/hrtool/";
-            window.location.href = "../index.html";
-        }).catch(error => {
-            console.log(getErrorMessage(error));
-            const toastError = document.getElementById("toast-error");
-            toastError.style.display = "block";
-        });
-    }
-    function getErrorMessage(error) {
-        if (error.code == "auth/invalid-login-credentials") {
-            return "Email ou senha incorretos";
-        }
-        return error.message;
-    }
-    /*
-    function register() {
-        window.location.href = "https://lukas-lkc.github.io/registerHrTool/";
-    }
-    */
-    function toggleEmailErrors() {
-        const email = form.email().value;
-        form.emailRequiredError().style.display = email ? "none" : "block";
-    }
-    function togglePasswordErrors() {
-        const password = form.password().value;
-        form.passwordRequiredError().style.display = password ? "none" : "block";
-    }
-    function toggleButtonsDisable() {
-        const emailValid = isEmailValid();
-        form.recoverPasswordButton().disabled = !emailValid;
-
-        const passwordValid = isPasswordValid();
-        form.loginButton().disabled = !emailValid || !passwordValid;
-    }
-
-
-    function recoverPassword() {
-        const email = form.email().value;
-
-        // Esconde o toast-error antes de tentar recuperar a senha
-        const toastError = document.getElementById("toast-error");
-        toastError.style.display = "none";
-
-        firebase.auth().sendPasswordResetEmail(email)
-            .then(() => {
-                // Redefinição de senha enviada com sucesso
-                // Exibir mensagem de sucesso
-                const toastSuccess = document.getElementById("toast-success");
-                toastSuccess.style.display = "block";
-            })
-            .catch(error => {
-                // Ocorreu um erro ao enviar a redefinição de senha
-                // Exibir mensagem de erro
-                const toastError = document.getElementById("toast-error");
-                toastError.style.display = "block";
-                console.error(error);
-            });
-    }
-
-    function isEmailValid() {
-        const email = form.email().value;
-        if (!email) {
-            return false;
-        }
-        return validateEmail(email);
-    }
-
-    function isPasswordValid() {
-        return form.password().value ? true : false;
-    }
-    function validateEmail(email) {
-        return /\S+@\S+\.\S+/.test(email);
-    }
-    form.email().addEventListener("change", onChangeEmail);
-
-    /*senha*/
     const icon = document.getElementById("icon");
     if (icon) {
         icon.addEventListener('click', showHider);
     }
-    function showHider() {
-        const password = document.getElementById("password");
-        const icon = document.getElementById("icon");
-    
-        if (password.type === "password") {
-            password.setAttribute('type', 'text');
-            icon.classList.add('hider');
-        } else {
-            password.setAttribute('type', 'password');
-            icon.classList.remove('hider');
-        }
-    }
-    /*não lembro o que é*/
+
     const sairLink = document.querySelector(".registro");
     if (sairLink) {
         sairLink.addEventListener('click', function (event) {
             event.preventDefault();
-            console.log('deveria')
+            console.log('deveria');
             window.location.href = '../Registro/registro.html';
         });
     }
+
+    // Verifique se o botão de login está presente
+    if (form.loginButton()) {
+        form.loginButton().addEventListener("click", login);
+        console.log("Vejo btn");
+    } else {
+        console.log("Não vejo btn");
+    }
 });
+
+function showHider() {
+    const password = document.getElementById("password");
+    const icon = document.getElementById("icon");
+
+    if (password.type === "password") {
+        password.setAttribute('type', 'text');
+        icon.classList.add('hider');
+    } else {
+        password.setAttribute('type', 'password');
+        icon.classList.remove('hider');
+    }
+}

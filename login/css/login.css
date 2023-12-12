@@ -194,7 +194,7 @@ button[disabled] {
   opacity: 0.5;
   right: 10px;
   /* ou ajuste conforme necessário */
-  background: url('/hrtool/img/eyeSps');
+  background: url('/hrtool/img/eyeSps.png');
   background-size: cover;
   width: 25px;
   height: 25px;
