@@ -2,7 +2,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.6.0/firebas
 //acima conecta o app ao projeto.
 //import {} from 'firebase/<service>';
 import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js';
-import { getFirestore, collection, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js';
+import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js';
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyBDykdiCuuMJksQvJ4y2tGkKKdIX3PprBw",
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             })
             .then(() => {
-                console.log("Informações adicionais salvas no <link>Firestore</link>");
+                console.log("Informações adicionais salvas no Firestore</link");
                 window.location.href = "../index.html";
             })
             .catch((error) => {
@@ -189,7 +189,6 @@ document.addEventListener("DOMContentLoaded", function () {
     linksLogin.forEach(function (link) {
         link.addEventListener('click', function (event) {
             event.preventDefault();
-            console.log('deveria');
             window.location.href = '../login/login.html';
         });
     });

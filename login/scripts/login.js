@@ -15,7 +15,6 @@ const firebaseApp = initializeApp({
 const auth = getAuth(firebaseApp);
 
 auth.onAuthStateChanged(user => {
-    console.log("Estado de Autenticação:", user);
 });
 
 let form;
@@ -25,9 +24,6 @@ function recoverPasswordClick() {
 }
 
 function login() {
-    console.log("Início da função login()");
-    console.log("Tentativa de login...");
-
     // Obtenha os valores de e-mail e senha
     const email = form.email().value;
     const password = form.password().value;
@@ -42,8 +38,6 @@ function login() {
             const toastError = document.getElementById("toast-error");
             toastError.style.display = "block";
         });
-
-    console.log("Fim da função login()");
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -74,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (sairLink) {
         sairLink.addEventListener('click', function (event) {
             event.preventDefault();
-            console.log('deveria');
             window.location.href = '../Registro/registro.html';
         });
     }
@@ -82,10 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Verifique se o botão de login está presente
     if (form.loginButton()) {
         form.loginButton().addEventListener("click", login);
-        console.log("Vejo btn");
-    } else {
-        console.log("Não vejo btn");
-    }
+    } 
 });
 
 function showHider() {

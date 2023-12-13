@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Logado com email:', user.email);
         } else {
             //O usuário não está autenticado
-            console.log('Deslogado');
             window.location.href = './login/login.html';
         }
     });
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Faça logout do usuário
         signOut(auth).then(() => {
-            console.log('Usuário deslogado com sucesso.');
             //cai na verificação de autenticação #1
         }).catch((error) => {
             console.error('Erro ao deslogar:', error);
