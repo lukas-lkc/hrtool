@@ -1,14 +1,6 @@
 Página de Teste de Conhecimentos em HTML, CSS e JS
 
-Esta página é um teste dos meus conhecimentos em HTML, CSS e JavaScript. Aqui, eu exploro diferentes conceitos e técnicas para criar uma página web funcional e visualmente agradável.
-
-Projetos de Referência
-
-Durante a criação desta página, utilizei alguns projetos de referência como inspiração e para aprender novas técnicas. Os seguintes projetos foram utilizados como referência:
-
-Projeto A - Link para o projeto A Estrutura da página.
-
-Projeto B - Link para o projeto B Header/Sidebar
+Esta página é um teste dos meus conhecimentos em HTML, CSS, JavaScript e Firebase. Aqui, eu exploro diferentes conceitos e técnicas para criar uma página web funcional e visualmente agradável.
 
 Ícones Utilizados
 
@@ -28,4 +20,4 @@ Navegue pela página e explore os diferentes elementos e funcionalidades impleme
 
 Considerações Finais
 
-Esta página de teste é um reflexo dos meus conhecimentos atuais em HTML, CSS e JavaScript. Espero que você goste de explorar a página e que ela demonstre o meu progresso e habilidades nessa área. Se tiver alguma dúvida ou feedback, fique à vontade para entrar em contato. Aproveite a experiência e obrigado por visitar a minha página de testes!
+Esta página de teste é um reflexo dos meus conhecimentos atuais em HTML, CSS, JavaScript e Firebase. Se tiver alguma dúvida ou feedback, fique à vontade para entrar em contato. Aproveite a experiência e obrigado por visitar a minha página!
